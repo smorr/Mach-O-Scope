@@ -1,0 +1,681 @@
+// !$*UTF8*$!
+{
+	256AC3D80F4B6AC300CF3369 /* Mach_O_scopeAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {978, 662}}";
+			sepNavSelRange = "{1656, 0}";
+			sepNavVisRange = "{0, 1835}";
+			sepNavWindowFrame = "{{684, 563}, {1037, 615}}";
+		};
+	};
+	256AC3D90F4B6AC300CF3369 /* Mach_O_scopeAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1519, 1757}}";
+			sepNavSelRange = "{1656, 0}";
+			sepNavVisRange = "{0, 2768}";
+			sepNavWindowFrame = "{{292, 67}, {1578, 1111}}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 3222D4BA1195EFDF007A29ED /* Mach-O-scope */;
+		activeTarget = 8D1107260486CEB800E47090 /* Mach-O-scope */;
+		addToTargets = (
+			8D1107260486CEB800E47090 /* Mach-O-scope */,
+		);
+		breakpoints = (
+			3222DDA01197BE2B007A29ED /* MOSClass.m:103 */,
+			3222E54011990185007A29ED /* MOSMethod.m:273 */,
+			3222EA2D1199D340007A29ED /* ClassMethodWindowController.m:360 */,
+			32E059C2119AF6F100489307 /* ClassMethodWindowController.m:88 */,
+			32E059EE119AFA5400489307 /* MOScontextualMenuTextFieldCell.m:14 */,
+			32E059F2119AFA5A00489307 /* MOScontextualMenuTextFieldCell.m:18 */,
+		);
+		codeSenseManager = 3222D4C41195EFFD007A29ED /* Code sense */;
+		executables = (
+			3222D4BA1195EFDF007A29ED /* Mach-O-scope */,
+		);
+		perUserDictionary = {
+			PBXPerProjectTemplateStateSaveDate = 295455931;
+			PBXWorkspaceStateSaveDate = 295455931;
+		};
+		perUserProjectItems = {
+			32E06481119C557F00489307 /* PBXBookmark */ = 32E06481119C557F00489307 /* PBXBookmark */;
+			32E06482119C56D000489307 /* PBXBookmark */ = 32E06482119C56D000489307 /* PBXBookmark */;
+			32E06483119C56DA00489307 /* PBXBookmark */ = 32E06483119C56DA00489307 /* PBXBookmark */;
+			32E06484119C56DE00489307 /* PBXBookmark */ = 32E06484119C56DE00489307 /* PBXBookmark */;
+			32E06485119C56E200489307 /* PBXBookmark */ = 32E06485119C56E200489307 /* PBXBookmark */;
+			32E06486119C56E600489307 /* PBXBookmark */ = 32E06486119C56E600489307 /* PBXBookmark */;
+			32E0648C119C570900489307 /* PBXBookmark */ = 32E0648C119C570900489307 /* PBXBookmark */;
+			32E0648E119C571500489307 /* PBXBookmark */ = 32E0648E119C571500489307 /* PBXBookmark */;
+			32E06490119C572100489307 /* PBXBookmark */ = 32E06490119C572100489307 /* PBXBookmark */;
+			32E064A0119C578D00489307 /* PBXTextBookmark */ = 32E064A0119C578D00489307 /* PBXTextBookmark */;
+			32E064A8119C578D00489307 /* PBXTextBookmark */ = 32E064A8119C578D00489307 /* PBXTextBookmark */;
+			32E064AD119C578D00489307 /* PBXTextBookmark */ = 32E064AD119C578D00489307 /* PBXTextBookmark */;
+			32E064B2119C578D00489307 /* PBXTextBookmark */ = 32E064B2119C578D00489307 /* PBXTextBookmark */;
+			32E064C8119C58E900489307 /* PBXBookmark */ = 32E064C8119C58E900489307 /* PBXBookmark */;
+			32E064F3119C5D1F00489307 /* PBXTextBookmark */ = 32E064F3119C5D1F00489307 /* PBXTextBookmark */;
+			32E06505119C5FAF00489307 /* PBXTextBookmark */ = 32E06505119C5FAF00489307 /* PBXTextBookmark */;
+			32E06506119C5FAF00489307 /* PBXTextBookmark */ = 32E06506119C5FAF00489307 /* PBXTextBookmark */;
+			32E06507119C5FAF00489307 /* PBXTextBookmark */ = 32E06507119C5FAF00489307 /* PBXTextBookmark */;
+			32E06508119C5FAF00489307 /* PBXTextBookmark */ = 32E06508119C5FAF00489307 /* PBXTextBookmark */;
+			32E06509119C5FAF00489307 /* PBXTextBookmark */ = 32E06509119C5FAF00489307 /* PBXTextBookmark */;
+			32E0650A119C5FAF00489307 /* PBXTextBookmark */ = 32E0650A119C5FAF00489307 /* PBXTextBookmark */;
+			32E0650B119C5FAF00489307 /* PBXTextBookmark */ = 32E0650B119C5FAF00489307 /* PBXTextBookmark */;
+			32E0650C119C5FAF00489307 /* PBXTextBookmark */ = 32E0650C119C5FAF00489307 /* PBXTextBookmark */;
+			32E0650D119C5FAF00489307 /* PBXTextBookmark */ = 32E0650D119C5FAF00489307 /* PBXTextBookmark */;
+			32E0650E119C5FAF00489307 /* PBXTextBookmark */ = 32E0650E119C5FAF00489307 /* PBXTextBookmark */;
+			32E0650F119C5FAF00489307 /* PBXTextBookmark */ = 32E0650F119C5FAF00489307 /* PBXTextBookmark */;
+			32E06510119C5FAF00489307 /* PBXTextBookmark */ = 32E06510119C5FAF00489307 /* PBXTextBookmark */;
+			32E06511119C5FAF00489307 /* PBXTextBookmark */ = 32E06511119C5FAF00489307 /* PBXTextBookmark */;
+			32E06512119C5FAF00489307 /* PBXTextBookmark */ = 32E06512119C5FAF00489307 /* PBXTextBookmark */;
+			32E06513119C5FAF00489307 /* PBXTextBookmark */ = 32E06513119C5FAF00489307 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 3222D4C31195EFFD007A29ED /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	3222D4BA1195EFDF007A29ED /* Mach-O-scope */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = "Mach-O-scope";
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+		};
+	};
+	3222D4C31195EFFD007A29ED /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	3222D4C41195EFFD007A29ED /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	3222D4CF1195F041007A29ED /* EGODatabase.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {978, 1278}}";
+			sepNavSelRange = "{0, 1205}";
+			sepNavVisRange = "{0, 1398}";
+			sepNavWindowFrame = "{{199, 390}, {1037, 615}}";
+		};
+	};
+	3222D4D01195F041007A29ED /* EGODatabase.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1118, 5714}}";
+			sepNavSelRange = "{6541, 0}";
+			sepNavVisRange = "{7840, 1195}";
+			sepNavWindowFrame = "{{199, 390}, {1037, 615}}";
+		};
+	};
+	3222D4D21195F041007A29ED /* EGODatabaseRequest.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1204, 1625}}";
+			sepNavSelRange = "{856, 1}";
+			sepNavVisRange = "{0, 1931}";
+			sepNavWindowFrame = "{{637, 155}, {1263, 950}}";
+		};
+	};
+	3222D4D31195F041007A29ED /* EGODatabaseResult.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1148, 808}}";
+			sepNavSelRange = "{1508, 14}";
+			sepNavVisRange = "{0, 1813}";
+		};
+	};
+	3222D4D41195F041007A29ED /* EGODatabaseResult.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1148, 995}}";
+			sepNavSelRange = "{1245, 34}";
+			sepNavVisRange = "{0, 1958}";
+			sepNavWindowFrame = "{{15, 23}, {1239, 1150}}";
+		};
+	};
+	3222D4D51195F041007A29ED /* EGODatabaseRow.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1148, 845}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 2044}";
+		};
+	};
+	3222D4D61195F041007A29ED /* EGODatabaseRow.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1148, 1670}}";
+			sepNavSelRange = "{1269, 31}";
+			sepNavVisRange = "{1867, 1737}";
+		};
+	};
+	3222D4E71195F0EF007A29ED /* ClassMethodWindowController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1211, 1032}}";
+			sepNavSelRange = "{1660, 0}";
+			sepNavVisRange = "{0, 2588}";
+			sepNavWindowFrame = "{{600, 18}, {1270, 1160}}";
+		};
+	};
+	3222D4E81195F0EF007A29ED /* ClassMethodWindowController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1070, 6452}}";
+			sepNavSelRange = "{5334, 0}";
+			sepNavVisRange = "{2511, 1654}";
+			sepNavWindowFrame = "{{334, 18}, {1270, 1160}}";
+		};
+	};
+	3222D4F7119609F2007A29ED /* MOSDatabase.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1519, 983}}";
+			sepNavSelRange = "{1165, 0}";
+			sepNavVisRange = "{0, 2029}";
+			sepNavWindowFrame = "{{1260, -91}, {1578, 1111}}";
+		};
+	};
+	3222D4F8119609F2007A29ED /* MOSDatabase.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1519, 1952}}";
+			sepNavSelRange = "{1644, 0}";
+			sepNavVisRange = "{0, 2994}";
+			sepNavWindowFrame = "{{292, 67}, {1578, 1111}}";
+		};
+	};
+	3222DAE211979F6C007A29ED /* OTXDisassemblyScanner.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1070, 837}}";
+			sepNavSelRange = "{1654, 0}";
+			sepNavVisRange = "{0, 1889}";
+			sepNavWindowFrame = "{{826, 163}, {1129, 965}}";
+		};
+	};
+	3222DAE311979F6C007A29ED /* OTXDisassemblyScanner.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1180, 2417}}";
+			sepNavSelRange = "{1654, 0}";
+			sepNavVisRange = "{0, 2433}";
+			sepNavWindowFrame = "{{631, 28}, {1239, 1150}}";
+		};
+	};
+	3222DD0C1197BAA8007A29ED /* MOSClass.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {940, 989}}";
+			sepNavSelRange = "{1851, 0}";
+			sepNavVisRange = "{0, 2415}";
+			sepNavWindowFrame = "{{38, 12}, {999, 1140}}";
+		};
+	};
+	3222DD0D1197BAA8007A29ED /* MOSClass.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1741, 1502}}";
+			sepNavSelRange = "{699, 0}";
+			sepNavVisRange = "{18, 3354}";
+			sepNavWindowFrame = "{{1076, 129}, {1716, 1049}}";
+		};
+	};
+	3222DD101197BC05007A29ED /* ClassArrayController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1349, 577}}";
+			sepNavSelRange = "{1145, 0}";
+			sepNavVisRange = "{0, 1974}";
+			sepNavWindowFrame = "{{38, 245}, {895, 907}}";
+		};
+	};
+	3222DD111197BC05007A29ED /* ClassArrayController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1297, 973}}";
+			sepNavSelRange = "{1177, 0}";
+			sepNavVisRange = "{0, 2385}";
+			sepNavWindowFrame = "{{150, 29}, {1356, 1149}}";
+		};
+	};
+	3222DDA01197BE2B007A29ED /* MOSClass.m:103 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 3222DD0D1197BAA8007A29ED /* MOSClass.m */;
+		functionName = "-copyWithZone:";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 103;
+		location = "Mach-O-scope";
+		modificationTime = 295460783.598676;
+		originalNumberOfMultipleMatches = 1;
+		state = 0;
+	};
+	3222DFFE1197C6AD007A29ED /* MOSMethod.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1211, 1034}}";
+			sepNavSelRange = "{1852, 0}";
+			sepNavVisRange = "{0, 2968}";
+			sepNavWindowFrame = "{{596, 18}, {1270, 1160}}";
+		};
+	};
+	3222DFFF1197C6AD007A29ED /* MOSMethod.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1204, 4274}}";
+			sepNavSelRange = "{1852, 0}";
+			sepNavVisRange = "{0, 2559}";
+			sepNavWindowFrame = "{{43, 228}, {1263, 950}}";
+		};
+	};
+	3222E17111987E9D007A29ED /* MOSOperation.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1657, 959}}";
+			sepNavSelRange = "{1855, 0}";
+			sepNavVisRange = "{0, 2549}";
+			sepNavWindowFrame = "{{15, 124}, {1716, 1049}}";
+		};
+	};
+	3222E17211987E9D007A29ED /* MOSOperation.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1316, 1667}}";
+			sepNavSelRange = "{45, 100}";
+			sepNavVisRange = "{0, 2369}";
+			sepNavWindowFrame = "{{1288, 231}, {1375, 947}}";
+		};
+	};
+	3222E54011990185007A29ED /* MOSMethod.m:273 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 3222DFFF1197C6AD007A29ED /* MOSMethod.m */;
+		functionName = "+updateTableIfNecessary";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 273;
+		location = "Mach-O-scope";
+		modificationTime = 295460783.622561;
+		originalNumberOfMultipleMatches = 1;
+		state = 0;
+	};
+	3222EA2D1199D340007A29ED /* ClassMethodWindowController.m:360 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 3222D4E81195F0EF007A29ED /* ClassMethodWindowController.m */;
+		functionName = "-updateProgressIndicatorWithCount:";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 360;
+		location = "Mach-O-scope";
+		modificationTime = 295460124.148349;
+		originalNumberOfMultipleMatches = 1;
+		state = 2;
+	};
+	32E059C2119AF6F100489307 /* ClassMethodWindowController.m:88 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 3222D4E81195F0EF007A29ED /* ClassMethodWindowController.m */;
+		functionName = "-validateMenuItem:";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 88;
+		location = "Mach-O-scope";
+		modificationTime = 295460783.711228;
+		originalNumberOfMultipleMatches = 1;
+		state = 0;
+	};
+	32E059DA119AF97300489307 /* MOScontextualMenuTextFieldCell.m */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.objc;
+		name = MOScontextualMenuTextFieldCell.m;
+		path = "/Users/smorr/Development/Mach-O-scope/MOScontextualMenuTextFieldCell.m";
+		sourceTree = "<absolute>";
+	};
+	32E059EE119AFA5400489307 /* MOScontextualMenuTextFieldCell.m:14 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 32E059DA119AF97300489307 /* MOScontextualMenuTextFieldCell.m */;
+		functionName = "-acceptsFirstResponder";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 14;
+		modificationTime = 295460783.756545;
+		originalNumberOfMultipleMatches = 1;
+		state = 0;
+	};
+	32E059F2119AFA5A00489307 /* MOScontextualMenuTextFieldCell.m:18 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 32E059DA119AF97300489307 /* MOScontextualMenuTextFieldCell.m */;
+		functionName = "-mouseDown:";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 18;
+		modificationTime = 295460782.851483;
+		originalNumberOfMultipleMatches = 1;
+		state = 1;
+	};
+	32E05A14119AFC2B00489307 /* MOSsymbolsTextFieldCell.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1070, 837}}";
+			sepNavSelRange = "{1656, 0}";
+			sepNavVisRange = "{0, 1746}";
+			sepNavWindowFrame = "{{153, 82}, {1129, 965}}";
+		};
+	};
+	32E05A15119AFC2B00489307 /* MOSsymbolsTextFieldCell.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1194, 1067}}";
+			sepNavSelRange = "{1332, 0}";
+			sepNavVisRange = "{3, 2201}";
+			sepNavWindowFrame = "{{547, 241}, {1253, 816}}";
+		};
+	};
+	32E0632F119B9A4E00489307 /* DisassemblyWindowController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {877, 557}}";
+			sepNavSelRange = "{1660, 0}";
+			sepNavVisRange = "{387, 1451}";
+			sepNavWindowFrame = "{{561, 427}, {936, 523}}";
+		};
+	};
+	32E06330119B9A4E00489307 /* DisassemblyWindowController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1070, 837}}";
+			sepNavSelRange = "{1660, 0}";
+			sepNavVisRange = "{0, 2048}";
+			sepNavWindowFrame = "{{633, 74}, {1129, 965}}";
+		};
+	};
+	32E06481119C557F00489307 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 3222D4F7119609F2007A29ED /* MOSDatabase.h */;
+	};
+	32E06482119C56D000489307 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 3222DAE211979F6C007A29ED /* OTXDisassemblyScanner.h */;
+	};
+	32E06483119C56DA00489307 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 256AC3D80F4B6AC300CF3369 /* Mach_O_scopeAppDelegate.h */;
+	};
+	32E06484119C56DE00489307 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 3222D4E71195F0EF007A29ED /* ClassMethodWindowController.h */;
+	};
+	32E06485119C56E200489307 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 32E0632F119B9A4E00489307 /* DisassemblyWindowController.h */;
+	};
+	32E06486119C56E600489307 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 32E05A14119AFC2B00489307 /* MOSsymbolsTextFieldCell.h */;
+	};
+	32E0648C119C570900489307 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 3222DAE311979F6C007A29ED /* OTXDisassemblyScanner.m */;
+	};
+	32E0648E119C571500489307 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 3222D4E81195F0EF007A29ED /* ClassMethodWindowController.m */;
+	};
+	32E06490119C572100489307 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 32E05A15119AFC2B00489307 /* MOSsymbolsTextFieldCell.m */;
+	};
+	32E064A0119C578D00489307 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3222E17211987E9D007A29ED /* MOSOperation.m */;
+		name = "MOSOperation.m: 42";
+		rLen = 0;
+		rLoc = 2721;
+		rType = 0;
+		vrLen = 1801;
+		vrLoc = 0;
+	};
+	32E064A8119C578D00489307 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 32E06330119B9A4E00489307 /* DisassemblyWindowController.m */;
+		name = "DisassemblyWindowController.m: 23";
+		rLen = 40;
+		rLoc = 1926;
+		rType = 0;
+		vrLen = 551;
+		vrLoc = 0;
+	};
+	32E064AD119C578D00489307 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* Mach_O_scopeAppDelegate.m */;
+		name = "Mach_O_scopeAppDelegate.m: 77";
+		rLen = 20;
+		rLoc = 3938;
+		rType = 0;
+		vrLen = 1818;
+		vrLoc = 809;
+	};
+	32E064B2119C578D00489307 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3222D4F8119609F2007A29ED /* MOSDatabase.m */;
+		name = "MOSDatabase.m: 95";
+		rLen = 62;
+		rLoc = 4260;
+		rType = 0;
+		vrLen = 1876;
+		vrLoc = 1193;
+	};
+	32E064C8119C58E900489307 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 3222D4CF1195F041007A29ED /* EGODatabase.h */;
+	};
+	32E064F3119C5D1F00489307 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3222DD0D1197BAA8007A29ED /* MOSClass.m */;
+		name = "MOSClass.m: 19";
+		rLen = 0;
+		rLoc = 696;
+		rType = 0;
+		vrLen = 3438;
+		vrLoc = 3;
+	};
+	32E06505119C5FAF00489307 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 32E05A15119AFC2B00489307 /* MOSsymbolsTextFieldCell.m */;
+		name = "MOSsymbolsTextFieldCell.m: 25";
+		rLen = 0;
+		rLoc = 1332;
+		rType = 0;
+		vrLen = 2201;
+		vrLoc = 3;
+	};
+	32E06506119C5FAF00489307 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3222DD0D1197BAA8007A29ED /* MOSClass.m */;
+		name = "MOSClass.m: 16";
+		rLen = 0;
+		rLoc = 699;
+		rType = 0;
+		vrLen = 3354;
+		vrLoc = 18;
+	};
+	32E06507119C5FAF00489307 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3222D4CF1195F041007A29ED /* EGODatabase.h */;
+		name = "EGODatabase.h: 1";
+		rLen = 1205;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1398;
+		vrLoc = 0;
+	};
+	32E06508119C5FAF00489307 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3222E17211987E9D007A29ED /* MOSOperation.m */;
+		name = "MOSOperation.m: 5";
+		rLen = 100;
+		rLoc = 45;
+		rType = 0;
+		vrLen = 2369;
+		vrLoc = 0;
+	};
+	32E06509119C5FAF00489307 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 32E06330119B9A4E00489307 /* DisassemblyWindowController.m */;
+		name = "DisassemblyWindowController.m: 29";
+		rLen = 0;
+		rLoc = 1660;
+		rType = 0;
+		vrLen = 2048;
+		vrLoc = 0;
+	};
+	32E0650A119C5FAF00489307 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3222D4E81195F0EF007A29ED /* ClassMethodWindowController.m */;
+		name = "ClassMethodWindowController.m: 29";
+		rLen = 0;
+		rLoc = 1660;
+		rType = 0;
+		vrLen = 2817;
+		vrLoc = 0;
+	};
+	32E0650B119C5FAF00489307 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* Mach_O_scopeAppDelegate.m */;
+		name = "Mach_O_scopeAppDelegate.m: 29";
+		rLen = 0;
+		rLoc = 1656;
+		rType = 0;
+		vrLen = 2768;
+		vrLoc = 0;
+	};
+	32E0650C119C5FAF00489307 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3222DAE311979F6C007A29ED /* OTXDisassemblyScanner.m */;
+		name = "OTXDisassemblyScanner.m: 29";
+		rLen = 0;
+		rLoc = 1654;
+		rType = 0;
+		vrLen = 2433;
+		vrLoc = 0;
+	};
+	32E0650D119C5FAF00489307 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3222D4F8119609F2007A29ED /* MOSDatabase.m */;
+		name = "MOSDatabase.m: 29";
+		rLen = 0;
+		rLoc = 1644;
+		rType = 0;
+		vrLen = 2994;
+		vrLoc = 0;
+	};
+	32E0650E119C5FAF00489307 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 32E05A14119AFC2B00489307 /* MOSsymbolsTextFieldCell.h */;
+		name = "MOSsymbolsTextFieldCell.h: 29";
+		rLen = 0;
+		rLoc = 1656;
+		rType = 0;
+		vrLen = 1746;
+		vrLoc = 0;
+	};
+	32E0650F119C5FAF00489307 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 32E0632F119B9A4E00489307 /* DisassemblyWindowController.h */;
+		name = "DisassemblyWindowController.h: 29";
+		rLen = 0;
+		rLoc = 1660;
+		rType = 0;
+		vrLen = 1451;
+		vrLoc = 387;
+	};
+	32E06510119C5FAF00489307 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3222D4E71195F0EF007A29ED /* ClassMethodWindowController.h */;
+		name = "ClassMethodWindowController.h: 29";
+		rLen = 0;
+		rLoc = 1660;
+		rType = 0;
+		vrLen = 2588;
+		vrLoc = 0;
+	};
+	32E06511119C5FAF00489307 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D80F4B6AC300CF3369 /* Mach_O_scopeAppDelegate.h */;
+		name = "Mach_O_scopeAppDelegate.h: 29";
+		rLen = 0;
+		rLoc = 1656;
+		rType = 0;
+		vrLen = 1835;
+		vrLoc = 0;
+	};
+	32E06512119C5FAF00489307 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3222DAE211979F6C007A29ED /* OTXDisassemblyScanner.h */;
+		name = "OTXDisassemblyScanner.h: 29";
+		rLen = 0;
+		rLoc = 1654;
+		rType = 0;
+		vrLen = 1889;
+		vrLoc = 0;
+	};
+	32E06513119C5FAF00489307 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3222D4F7119609F2007A29ED /* MOSDatabase.h */;
+		name = "MOSDatabase.h: 23";
+		rLen = 0;
+		rLoc = 1165;
+		rType = 0;
+		vrLen = 2029;
+		vrLoc = 0;
+	};
+	8D1107260486CEB800E47090 /* Mach-O-scope */ = {
+		activeExec = 0;
+		executables = (
+			3222D4BA1195EFDF007A29ED /* Mach-O-scope */,
+		);
+	};
+}
