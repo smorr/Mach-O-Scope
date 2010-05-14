@@ -58,5 +58,6 @@
 -(IBAction)cancelImport:(id)sender;
 -(IBAction)openDocument:(id)sender;
 -(IBAction)disassembleMachO:(id)sender;
+-(IBAction)openNewDissamblyWindow:(id)sender;
 -(NSArray*)classes;
 @end

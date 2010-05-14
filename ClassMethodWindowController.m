@@ -50,7 +50,9 @@ const NSString * myNibName = @"ClassMethodBrowser";
 @synthesize symbolFilter,searchContext;
 @synthesize showMisses;
 @synthesize progressAmount, progressTotal;
-
+-(void)doubleClickMethod:(id)sender{
+	[self openDisassemblyWindowForMethodID:[sender integerValue]];
+}
 
 -(id)init{
 	self = [super initWithWindowNibName:[NSString stringWithString:myNibName]];

@@ -39,8 +39,10 @@ static NSColor * _Static_greyColor;
 static NSColor * _Static_blackColor;
 
 +(void)load{
+	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
 	_Static_greyColor = [[NSColor colorWithDeviceWhite:0.8 alpha:1.0] retain];
 	_Static_blackColor = [[NSColor blackColor] retain];
+	[pool release];
 }
 
 
