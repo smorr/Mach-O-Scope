@@ -38,6 +38,19 @@ const NSInteger structureVersion = 1;
 @implementation MOSDatabase
 @synthesize delegate;
 
+static NSColor * _Static_greyColor;
+static NSColor * _Static_blackColor;
+static NSColor * _Static_mediumGreyColor;
+static NSColor * _Static_redColor;
+
++(void)load{
+	_Static_mediumGreyColor = [[NSColor colorWithDeviceWhite:0.5 alpha:1.0] retain];
+	_Static_greyColor = [[NSColor colorWithDeviceWhite:0.8 alpha:1.0] retain];
+	_Static_blackColor = [[NSColor blackColor] retain];
+	_Static_redColor = [[NSColor redColor] retain];
+}
+
+
 -(BOOL)dropStructure{
 	[self executeUpdate:@"drop table Classes"];
 	[self executeUpdate:@"drop table Methods"];
@@ -59,11 +72,21 @@ const NSInteger structureVersion = 1;
 	
 }
 -(NSArray *)operationsForMethodID:(NSInteger)methodID{
+	
 	EGODatabaseResult * result = [self executeQueryWithParameters:@"select * from Operations where methodid = ?",[NSNumber numberWithInteger:methodID],nil];
 	NSMutableArray * operations = [[NSMutableArray alloc] initWithCapacity:[result count]];
 	for (id row in result){
 		MOSOperation* operationObject =[[MOSOperation alloc] initWithResultRow:row];
 		[operationObject setDelegate:  self];
+		NSString * searchSymbol = [self.delegate symbolFilter];
+		if ([self.delegate searchContext] == kSymbolSearch && [searchSymbol length]>0){
+			if ([operationObject.symbols rangeOfString:searchSymbol options: NSCaseInsensitiveSearch].location == NSNotFound){
+				operationObject.highlightColor = _Static_greyColor;
+			}
+			else{
+				operationObject.highlightColor = _Static_blackColor;
+			}
+		}
 		[operations addObject:operationObject];
 		[operationObject release];
 	}

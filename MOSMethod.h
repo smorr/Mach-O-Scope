@@ -51,7 +51,7 @@
 @property (copy) NSString *methodType;
 @property (copy) NSString *returnType;
 @property (copy) NSString *notes;
-@property (copy) NSColor * highlightColor;
+@property (assign) NSColor * highlightColor;
 +(NSString*)createTableSqlStatement;
 
 @end
