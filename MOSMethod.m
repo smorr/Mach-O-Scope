@@ -36,6 +36,15 @@
 @synthesize highlightColor;
 @synthesize delegate;
 
+
+static NSColor * _Static_greyColor;
+static NSColor * _Static_blackColor;
+
++(void)load{
+	_Static_greyColor = [[NSColor colorWithDeviceWhite:0.8 alpha:1.0] retain];
+	_Static_blackColor = [[NSColor blackColor] retain];
+}
+
 -(id)initWithResultRow:(EGODatabaseRow *) resultRow{
 	self = [super init];
 	if (self){
@@ -174,12 +183,12 @@
 			for (id row in result){
 				MOSMethod* methodObject =[[MOSMethod alloc] initWithResultRow: row];
 				if ([highlightedMethods containsObject:[row stringForColumn:@"methodID"]])	{
-					[methodObject setHighlightColor:[NSColor blackColor]];
+					[methodObject setHighlightColor:_Static_blackColor];
 					[methods addObject:methodObject];
 				}
 				else{
 					
-					[methodObject setHighlightColor:[NSColor colorWithDeviceWhite:0.8 alpha:1.0]];
+					[methodObject setHighlightColor:_Static_greyColor];
 					[nonHighlightedMethods addObject:methodObject];
 				}
 				[methodObject setDelegate:  database];
@@ -196,7 +205,7 @@
 
 			for (id row in methodresult){
 				MOSMethod* methodObject =[[MOSMethod alloc] initWithResultRow: row];
-				[methodObject setHighlightColor:[NSColor blackColor]];
+				[methodObject setHighlightColor:_Static_blackColor];
 				[methodObject setDelegate:  database];
 				[methods addObject:methodObject];
 				[ methodObject release];
@@ -223,11 +232,11 @@
 			for (id row in result){
 				MOSMethod* methodObject =[[MOSMethod alloc] initWithResultRow: row];
 				if ([highlightedMethods containsObject:[row stringForColumn:@"methodID"]])	{
-					[methodObject setHighlightColor:[NSColor blackColor]];
+					[methodObject setHighlightColor:_Static_blackColor];
 					[methods addObject:methodObject];
 				}
 				else{
-					[methodObject setHighlightColor:[NSColor colorWithDeviceWhite:0.8 alpha:1.0]];
+					[methodObject setHighlightColor:_Static_greyColor];
 					[nonHighlightedMethods addObject:methodObject];
 				}
 				[methodObject setDelegate:  database];
@@ -244,7 +253,7 @@
 			
 			for (id row in methodresult){
 				MOSMethod* methodObject =[[MOSMethod alloc] initWithResultRow: row];
-				[methodObject setHighlightColor:[NSColor blackColor]];
+				[methodObject setHighlightColor:_Static_blackColor];
 				[methodObject setDelegate:  database];
 				[methods addObject:methodObject];
 				[methodObject release];
