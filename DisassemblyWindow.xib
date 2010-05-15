@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="41"/>
+			<integer value="1"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -41,7 +41,7 @@
 			<object class="NSWindowTemplate" id="1005">
 				<int key="NSWindowStyleMask">15</int>
 				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{196, -272}, {1058, 782}}</string>
+				<string key="NSWindowRect">{{128, 221}, {1058, 782}}</string>
 				<int key="NSWTFlags">544735232</int>
 				<string key="NSWindowTitle">Window</string>
 				<string key="NSWindowClass">NSWindow</string>
@@ -348,9 +348,9 @@
 																		<int key="NSCellFlags">67239488</int>
 																		<int key="NSCellFlags2">2048</int>
 																		<string key="NSContents">Text Cell</string>
-																		<object class="NSFont" key="NSSupport" id="699944507">
-																			<string key="NSName">Courier</string>
-																			<double key="NSSize">11</double>
+																		<object class="NSFont" key="NSSupport" id="626728299">
+																			<string key="NSName">Monaco</string>
+																			<double key="NSSize">9</double>
 																			<int key="NSfFlags">16</int>
 																		</object>
 																		<reference key="NSControlView" ref="714549006"/>
@@ -385,7 +385,7 @@
 																		<int key="NSCellFlags">69336641</int>
 																		<int key="NSCellFlags2">2048</int>
 																		<string key="NSContents">Text Cell</string>
-																		<reference key="NSSupport" ref="699944507"/>
+																		<reference key="NSSupport" ref="626728299"/>
 																		<reference key="NSControlView" ref="714549006"/>
 																		<reference key="NSBackgroundColor" ref="812394878"/>
 																		<reference key="NSTextColor" ref="1058069617"/>
@@ -414,7 +414,7 @@
 																		<int key="NSCellFlags">337772096</int>
 																		<int key="NSCellFlags2">2048</int>
 																		<string key="NSContents">Text Cell</string>
-																		<reference key="NSSupport" ref="699944507"/>
+																		<reference key="NSSupport" ref="626728299"/>
 																		<reference key="NSControlView" ref="714549006"/>
 																		<reference key="NSBackgroundColor" ref="812394878"/>
 																		<reference key="NSTextColor" ref="1058069617"/>
@@ -437,7 +437,7 @@
 																		<int key="NSCellFlags">337772096</int>
 																		<int key="NSCellFlags2">2048</int>
 																		<string key="NSContents">Text Cell</string>
-																		<reference key="NSSupport" ref="699944507"/>
+																		<reference key="NSSupport" ref="626728299"/>
 																		<reference key="NSControlView" ref="714549006"/>
 																		<reference key="NSBackgroundColor" ref="812394878"/>
 																		<reference key="NSTextColor" ref="1058069617"/>
@@ -462,7 +462,7 @@
 																		<int key="NSCellFlags">337772096</int>
 																		<int key="NSCellFlags2">2048</int>
 																		<string key="NSContents">Text Cell</string>
-																		<reference key="NSSupport" ref="699944507"/>
+																		<reference key="NSSupport" ref="626728299"/>
 																		<reference key="NSControlView" ref="714549006"/>
 																		<reference key="NSBackgroundColor" ref="812394878"/>
 																		<reference key="NSTextColor" ref="1058069617"/>
@@ -487,7 +487,7 @@
 																		<int key="NSCellFlags">69336641</int>
 																		<int key="NSCellFlags2">2048</int>
 																		<string key="NSContents">Text Cell</string>
-																		<reference key="NSSupport" ref="699944507"/>
+																		<reference key="NSSupport" ref="626728299"/>
 																		<reference key="NSControlView" ref="714549006"/>
 																		<reference key="NSBackgroundColor" ref="812394878"/>
 																		<reference key="NSTextColor" ref="1058069617"/>
@@ -540,7 +540,7 @@
 																	<bytes key="NSWhite">MC41AA</bytes>
 																</object>
 															</object>
-															<double key="NSRowHeight">17</double>
+															<double key="NSRowHeight">13</double>
 															<int key="NSTvFlags">1111523328</int>
 															<reference key="NSDelegate"/>
 															<reference key="NSDataSource"/>
@@ -566,7 +566,7 @@
 													<reference key="NSTarget" ref="668288608"/>
 													<string key="NSAction">_doScroller:</string>
 													<double key="NSCurValue">0.99150010302905411</double>
-													<double key="NSPercent">0.19473679999999999</double>
+													<double key="NSPercent">0.98947368421052628</double>
 												</object>
 												<object class="NSScroller" id="99725151">
 													<reference key="NSNextResponder" ref="668288608"/>
@@ -604,7 +604,7 @@
 											<reference key="NSContentView" ref="623021944"/>
 											<reference key="NSHeaderClipView" ref="1016352855"/>
 											<reference key="NSCornerView" ref="53561531"/>
-											<bytes key="NSScrollAmts">QSAAAEEgAABBmAAAQZgAAA</bytes>
+											<bytes key="NSScrollAmts">QSAAAEEgAABBcAAAQXAAAA</bytes>
 										</object>
 									</object>
 									<string key="NSFrame">{{0, 91}, {1063, 691}}</string>
@@ -620,7 +620,7 @@
 					<string key="NSFrameSize">{1058, 782}</string>
 					<reference key="NSSuperview"/>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
 				<string key="NSMaxSize">{1.79769e+308, 1.79769e+308}</string>
 			</object>
 			<object class="NSArrayController" id="698151562">
@@ -1167,9 +1167,9 @@
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>{{403, 73}, {1058, 782}}</string>
+					<string>{{148, 209}, {1058, 782}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{403, 73}, {1058, 782}}</string>
+					<string>{{148, 209}, {1058, 782}}</string>
 					<integer value="1"/>
 					<string>{196, 240}</string>
 					<string>{{202, 428}, {480, 270}}</string>

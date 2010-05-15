@@ -30,8 +30,9 @@
 
 #import <Cocoa/Cocoa.h>
 #import "MOSDatabase.h"
+#import "OTXDisassemblyScanner.h"
 
-@interface ClassMethodWindowController : NSWindowController <NSTableViewDelegate> {
+@interface ClassMethodWindowController : NSWindowController <NSTableViewDelegate, MOSDatabaseDelegate>{
 	MOSDatabase * _database;
 	NSString * pathToDatabase;
 	NSString * methodFilter;
@@ -43,10 +44,11 @@
 	IBOutlet NSWindow * progressSheet;
 	BOOL cancelImport;
 	NSMutableArray * childWindows;
+	OTXDisassemblyScanner * currentScanner;
 	
 
 }
-@property (retain,readonly) EGODatabase * database;
+@property (retain,readonly) MOSDatabase * database;
 @property (copy) NSString * pathToDatabase;
 @property (copy) NSString * methodFilter;
 @property (copy) NSString * symbolFilter;
@@ -55,8 +57,13 @@
 @property (assign) NSInteger progressAmount;
 @property (assign) NSInteger progressTotal;
 
+-(id)initWithDatabasePath:(NSString*)aPath;
+-(void)openDisassemblyWindowForMethodID:(NSInteger)methodId;
+-(NSArray*)classes;
+
 -(IBAction)cancelImport:(id)sender;
 -(IBAction)openDocument:(id)sender;
 -(IBAction)disassembleMachO:(id)sender;
--(NSArray*)classes;
+-(IBAction)openNewDissamblyWindow:(id)sender;
+
 @end

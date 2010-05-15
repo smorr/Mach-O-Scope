@@ -29,11 +29,23 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #import <Cocoa/Cocoa.h>
 
+#import "MOSDatabase.h"
 
 @interface OTXDisassemblyScanner : NSObject {
-
+	MOSDatabase * database;
+	id delegate;
+	NSString * bundlePath;
+	NSInteger anonCounter;
+	BOOL cancelImport;
+	
 }
-+ (OTXDisassemblyScanner*)sharedScanner;
--(NSDictionary *) scanClassMethodName:(NSString *) line;
--(NSDictionary *) scanDisassemblyLine:(NSString *)line;
+
+@property (retain) MOSDatabase * database;
+@property (assign) id delegate;
+@property (copy) NSString * bundlePath;
+@property (assign) BOOL cancelImport;
+
+
+- (id)initWithDelegate: (id)anObject bundle:(NSString*)bundlePath andDatabase:(MOSDatabase *)aDatabase;
+
 @end

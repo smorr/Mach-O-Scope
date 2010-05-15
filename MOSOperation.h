@@ -42,6 +42,8 @@
 	NSString * data;
 	NSString * notes;
 	NSString * symbols;
+	NSColor * highlightColor;
+	
 	id delegate;
 	
 }
@@ -55,6 +57,9 @@
 @property (copy) NSString * notes;
 @property (copy) NSString * symbols;
 @property (assign) id delegate;
+
+@property (assign) NSColor * highlightColor;
+
 
 +(NSString*)createTableSqlStatement;
 -(id)initWithResultRow:(EGODatabaseRow *)resultRow;

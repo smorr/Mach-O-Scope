@@ -42,10 +42,10 @@
 	return self;
 }
 
--(id)initWithMethod:(MOSMethod*)method{
+-(id)initWithMethod:(MOSMethod*)aMethod{
 	self = [self init];
 	if (self){
-		self.method =method;
+		self.method =aMethod;
 	}
 	return self;
 	
