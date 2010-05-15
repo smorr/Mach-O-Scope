@@ -31,7 +31,7 @@
 
 
 @interface MOSsymbolsTextFieldCell : NSTextFieldCell{
-
+	
 }
 
 @end

@@ -30,15 +30,19 @@
 
 #import "MOSsymbolsTextFieldCell.h"
 
-#import "MOSDatabase.h"
 #import "EGODatabaseResult.h"
 #import "EGODatabaseRow.h"
+#import "MOSDatabase.h"
+
 #import "ClassMethodWindowController.h"
 
 @implementation MOSsymbolsTextFieldCell
 -(void)findMethod:(id)sender{
-	ClassMethodWindowController * windowController = [[[[[sender menu] delegate] controlView] window] delegate];
-	[windowController openDisassemblyWindowForMethodID:[sender tag]];
+	
+	ClassMethodWindowController * windowController = (ClassMethodWindowController*)[[[(MOSsymbolsTextFieldCell*)[[sender menu] delegate] controlView] window] delegate];
+	if ([windowController respondsToSelector:@selector(openDisassemblyWindowForMethodID:)]){
+		[windowController openDisassemblyWindowForMethodID:[sender tag]];
+	}
 }
 
 -(BOOL)validateMenuItem:(NSMenuItem *)menuItem{
@@ -46,7 +50,7 @@
 }
 - (void)menuNeedsUpdate:(NSMenu *)menu{
 	[menu setAutoenablesItems:YES];
-	MOSDatabase * db = [[[[self controlView] window] delegate] database];
+	MOSDatabase * db = [(ClassMethodWindowController*)[[[self controlView] window] delegate] database];
 	[menu removeAllItems];
 	EGODatabaseResult * dbResult = [db executeQueryWithParameters:@"select rawInfo,methodID from Methods where methodName = ?",[self stringValue],nil];
 	if ([dbResult count]){

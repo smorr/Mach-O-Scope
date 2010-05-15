@@ -35,4 +35,6 @@
 	MOSMethod * method;
 }
 @property (retain) MOSMethod * method;
+
+-(id)initWithMethod:(MOSMethod*)aMethod;
 @end

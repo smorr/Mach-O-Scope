@@ -54,10 +54,13 @@
 @property (assign) NSColor * highlightColor;
 +(NSString*)createTableSqlStatement;
 
+-(id)initWithResultRow:(EGODatabaseRow *) resultRow;
+
+
 @end
 
 @interface MOSMethod (database)
-+(NSArray *)methodsInDatabase: (MOSDatabase *) database forClassID:(NSInteger)classID whoseMethodsReferToSymbol:(NSString*) aSymbol;
++(NSArray *)methodsInDatabase: (MOSDatabase *) database forClassID:(NSInteger)classID searchingFor:(NSString*) aSymbol inContext:(NSInteger) context;
 +(NSArray *)methodsInDatabase: (MOSDatabase *) database forClassID:(NSInteger)classID;
 +(BOOL)createSqliteTableForDatabase:(MOSDatabase*)database;
 +(NSInteger)currentVersion;
