@@ -1,3 +1,4 @@
+
 //
 //  MOSDatabase.h
 //  Mach-O-scope
@@ -37,6 +38,9 @@ enum {
 	kMethodNameSearch = 1
 };
 
+
+
+
 @interface MOSDatabase : EGODatabase {
 	id delegate;
 }
@@ -45,4 +49,12 @@ enum {
 -(NSArray *)methodsForClass:(NSString*)className;
 -(NSArray *)operationsForMethodID:(NSInteger)methodID;
 -(NSArray *)classes;
+@end
+
+
+
+@protocol MOSDatabaseDelegate <NSObject>
+
+-(MOSDatabase*)database;
+
 @end
