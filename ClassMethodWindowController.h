@@ -48,7 +48,10 @@
 
 	IBOutlet NSWindow * progressSheet;
 	IBOutlet ClassArrayController* classesController;
-	NSArray * currentSelection;
+	NSArray * currentClassSelection;
+	IBOutlet NSArrayController* methodsController;
+	NSArray * currentMethodSelection;
+
 }
 
 @property (retain,readonly) MOSDatabase * database;
@@ -59,7 +62,8 @@
 @property (assign) NSInteger showMisses;
 @property (assign) NSInteger progressAmount;
 @property (assign) NSInteger progressTotal;
-@property (assign) NSArray *currentSelection;
+@property (retain) NSArray * currentClassSelection;
+@property (retain) NSArray * currentMethodSelection;
 
 -(id)initWithDatabasePath:(NSString*)aPath;
 -(void)openDisassemblyWindowForMethodID:(NSInteger)methodId;

@@ -52,7 +52,10 @@ NSString * myNibName = @"ClassMethodBrowser";
 @synthesize showMisses;
 @synthesize progressAmount, progressTotal;
 @synthesize currentScanner;
-@synthesize currentSelection;
+@synthesize currentClassSelection;
+@synthesize currentMethodSelection;
+
+
 -(void)doubleClickMethod:(id)sender{
 	[self openDisassemblyWindowForMethodID:[sender integerValue]];
 }
@@ -139,7 +142,10 @@ NSString * myNibName = @"ClassMethodBrowser";
 	if (aSymbol != self.symbolFilter){
 				
 		if ([[classesController selectedObjects] count]){
-			self.currentSelection = [classesController selectedObjects];
+			self.currentClassSelection = [classesController selectedObjects];
+		}	
+		if ([[methodsController selectedObjects] count]){
+			self.currentMethodSelection = [methodsController selectedObjects];
 		}	
 		
 		[self willChangeValueForKey:@"classes"];
@@ -148,17 +154,27 @@ NSString * myNibName = @"ClassMethodBrowser";
 		[oldString release];
 		[self didChangeValueForKey:@"classes"];
 		
-		if ([self.currentSelection count]){
+		if ([self.currentClassSelection count]){
 			NSArray * arrangedObjects =[classesController arrangedObjects];
-			MOSClass* selection = [self.currentSelection objectAtIndex:0];
-			for (MOSClass* anObject in arrangedObjects){
-				if ([anObject.className isEqualToString:selection.className]){
-					[classesController setSelectedObjects:[NSArray arrayWithObject:anObject]];
+			MOSClass* selectedClass = [self.currentClassSelection objectAtIndex:0];
+			for (MOSClass* aClass in arrangedObjects){
+				if (aClass.classID ==selectedClass.classID){
+					[classesController setSelectedObjects:[NSArray arrayWithObject:aClass]];
+					if ([self.currentMethodSelection count]){
+						MOSMethod * selectedMethod = [self.currentMethodSelection objectAtIndex:0];
+						for (MOSMethod * aMethod in [methodsController arrangedObjects]){
+							if (aMethod.methodID  == selectedMethod.methodID){
+								[methodsController setSelectedObjects:[NSArray arrayWithObject:aMethod]];
+								 break;
+							}
+						}
+					
 					break;
-				}
-			}
-		}
-	}
+					} // if currentMethodSelection.count
+				} // if classid = classid
+			} // for
+		} // if
+	} // if aSymbol
 }
 
 -(IBAction)cancelImport:(id)sender{
