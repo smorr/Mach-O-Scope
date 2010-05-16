@@ -41,10 +41,11 @@
 	return _clsSortDescriptor;
 }
 
+
 -(NSArray *) arrangedObjects{
 	NSArray * objects = [[super arrangedObjects] sortedArrayUsingDescriptors:[self sortDescriptors]];
 	return objects;
-	
 }
+
 
 @end

@@ -30,6 +30,7 @@
 
 #import "ClassMethodWindowController.h"
 #import "OTXDisassemblyScanner.h"
+#import "MOSClass.h"
 #import "MOSMethod.h"
 #import "DisassemblyWindowController.h"
 
@@ -51,6 +52,7 @@ NSString * myNibName = @"ClassMethodBrowser";
 @synthesize showMisses;
 @synthesize progressAmount, progressTotal;
 @synthesize currentScanner;
+@synthesize currentSelection;
 -(void)doubleClickMethod:(id)sender{
 	[self openDisassemblyWindowForMethodID:[sender integerValue]];
 }
@@ -135,12 +137,27 @@ NSString * myNibName = @"ClassMethodBrowser";
 
 -(void) setSymbolFilter:(NSString*)aSymbol{
 	if (aSymbol != self.symbolFilter){
+				
+		if ([[classesController selectedObjects] count]){
+			self.currentSelection = [classesController selectedObjects];
+		}	
+		
 		[self willChangeValueForKey:@"classes"];
 		id oldString = self.symbolFilter;
 		symbolFilter = [aSymbol copy];
 		[oldString release];
 		[self didChangeValueForKey:@"classes"];
 		
+		if ([self.currentSelection count]){
+			NSArray * arrangedObjects =[classesController arrangedObjects];
+			MOSClass* selection = [self.currentSelection objectAtIndex:0];
+			for (MOSClass* anObject in arrangedObjects){
+				if ([anObject.className isEqualToString:selection.className]){
+					[classesController setSelectedObjects:[NSArray arrayWithObject:anObject]];
+					break;
+				}
+			}
+		}
 	}
 }
 
@@ -206,7 +223,9 @@ NSString * myNibName = @"ClassMethodBrowser";
 }
 
 -(NSArray*)classes{
+	
 	id result =  [self.database classes];
+	
 	if (!result) return [NSMutableArray array];
 	return result;
 	

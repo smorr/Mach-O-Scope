@@ -31,6 +31,7 @@
 #import <Cocoa/Cocoa.h>
 #import "MOSDatabase.h"
 #import "OTXDisassemblyScanner.h"
+#import "ClassArrayController.h"
 
 @interface ClassMethodWindowController : NSWindowController <NSTableViewDelegate, MOSDatabaseDelegate>{
 	MOSDatabase * _database;
@@ -41,13 +42,15 @@
 	NSInteger showMisses;
 	NSInteger progressAmount;
 	NSInteger progressTotal;
-	IBOutlet NSWindow * progressSheet;
 	BOOL cancelImport;
 	NSMutableArray * childWindows;
 	OTXDisassemblyScanner * currentScanner;
-	
 
+	IBOutlet NSWindow * progressSheet;
+	IBOutlet ClassArrayController* classesController;
+	NSArray * currentSelection;
 }
+
 @property (retain,readonly) MOSDatabase * database;
 @property (copy) NSString * pathToDatabase;
 @property (copy) NSString * methodFilter;
@@ -56,6 +59,7 @@
 @property (assign) NSInteger showMisses;
 @property (assign) NSInteger progressAmount;
 @property (assign) NSInteger progressTotal;
+@property (assign) NSArray *currentSelection;
 
 -(id)initWithDatabasePath:(NSString*)aPath;
 -(void)openDisassemblyWindowForMethodID:(NSInteger)methodId;
