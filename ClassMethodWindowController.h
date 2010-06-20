@@ -73,5 +73,6 @@
 -(IBAction)openDocument:(id)sender;
 -(IBAction)disassembleMachO:(id)sender;
 -(IBAction)openNewDissamblyWindow:(id)sender;
+-(IBAction)saveSymbols:(id)sender;
 
 @end

@@ -247,6 +247,38 @@ NSString * myNibName = @"ClassMethodBrowser";
 	
 }
 
+-(IBAction)saveSymbols:(id)sender
+{
+	NSString* query = @"select Methods.methodName, Operations.address from Operations inner join Methods on Operations.methodId = Methods.methodId group by Methods.methodId;";
+	EGODatabaseResult * dbResult = [self.database executeQueryWithParameters:query,nil];
+	if ([dbResult count]){
+		NSMutableString* file = [NSMutableString string];
+		for (EGODatabaseRow * row in dbResult)
+		{
+			[file appendFormat:@"%@ %@\n",[row.columnData objectAtIndex:1],[row.columnData objectAtIndex:0]];
+		}
+		NSString* path = [[self.database.databasePath stringByDeletingLastPathComponent] stringByAppendingPathComponent:[[[self.database.databasePath lastPathComponent] stringByDeletingPathExtension] stringByAppendingPathExtension:@"symbols"]];
+		[file writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
+	}
+	else
+	{
+		NSRunAlertPanel(@"Error", @"No Results", @"Ok", nil, nil);
+	}
+}
+
+-(IBAction)openDocument:(id)sender
+{
+	NSLog(@"to be implemented");
+}
+-(IBAction)disassembleMachO:(id)sender
+{
+	NSLog(@"to be implemented");
+}
+
+-(IBAction)openNewDissamblyWindow:(id)sender
+{
+	NSLog(@"to be implemented");
+}
 
 @end
 

@@ -109,7 +109,10 @@
 }
 
 
-
+-(IBAction)saveSymbols:(id)sender
+{
+	[[[NSApp mainWindow] windowController] saveSymbols:sender];
+}
 
 
 @end

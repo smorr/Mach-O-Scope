@@ -28,6 +28,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #import "OTXDisassemblyScanner.h"
+#import "Mach_O_scopeAppDelegate.h"
 
 @interface NSString (OTXDisassemblyScanner)
 -(NSDictionary *) scanBlockInvocationMethodName;
@@ -43,11 +44,11 @@
 
 @synthesize database, delegate, bundlePath,cancelImport;
 
-- (id)initWithDelegate: (id)anObject bundle:(NSString*)bundlePath andDatabase:(MOSDatabase *)aDatabase{
+- (id)initWithDelegate: (id)anObject bundle:(NSString*)aBundlePath andDatabase:(MOSDatabase *)aDatabase{
 	self = [super init];
 	if (self){
 		self.delegate = anObject;
-		self.bundlePath = bundlePath;
+		self.bundlePath = aBundlePath;
 		self.database = aDatabase;
 	}
 	return self;
@@ -121,7 +122,7 @@
 		
 		if([line length] >0){
 			NSString * methodType = nil;
-			if ([line hasPrefix:@"+("] || [line hasPrefix:@"-("] || [line hasPrefix:@"_"]){
+			if ([line hasPrefix:@"+("] || [line hasPrefix:@"-("] || [line hasPrefix:@"_"] || [line hasPrefix:@"Anon"]){
 				NSDictionary * info = nil;
 				if ([line hasPrefix:@"+("]){  
 					methodType = @"+";
@@ -140,7 +141,7 @@
 					info = [line scanBlockInvocationMethodName];
 				}
 					// class method
-				else if ([line hasPrefix:@"_"]){// c function call
+				else if ([line hasPrefix:@"_"] || [line hasPrefix:@"Anon"]){// c function call
 					info = [line scanCFunctionName];
 					methodType = @"C";
 				}

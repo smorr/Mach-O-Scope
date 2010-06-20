@@ -104,5 +104,9 @@
 	return aCopy;
 }
 
-
++ (NSArray *)classesForDatabase:(MOSDatabase*)database whoseMethodsReferToSymbol:(NSString*) aSymbol
+{
+	NSLog(@"needs to be implemented: %s",__PRETTY_FUNCTION__);
+	return [NSArray array];
+}
 @end
