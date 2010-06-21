@@ -26,7 +26,6 @@
 		32E05A16119AFC2B00489307 /* MOSsymbolsTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32E05A15119AFC2B00489307 /* MOSsymbolsTextFieldCell.m */; };
 		32E06331119B9A4E00489307 /* DisassemblyWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32E06330119B9A4E00489307 /* DisassemblyWindowController.m */; };
 		32E06338119B9A9700489307 /* DisassemblyWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32E06337119B9A9700489307 /* DisassemblyWindow.xib */; };
-		3D33173511CE16E40065DC8E /* MOSMethodTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D33173411CE16E40065DC8E /* MOSMethodTextFieldCell.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -74,7 +73,6 @@
 		32E06330119B9A4E00489307 /* DisassemblyWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisassemblyWindowController.m; sourceTree = "<group>"; };
 		32E06337119B9A9700489307 /* DisassemblyWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisassemblyWindow.xib; sourceTree = "<group>"; };
 		3D33173311CE16E40065DC8E /* MOSMethodTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOSMethodTextFieldCell.h; sourceTree = "<group>"; };
-		3D33173411CE16E40065DC8E /* MOSMethodTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOSMethodTextFieldCell.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Mach_O_scope-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Mach_O_scope-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Mach-O-scope.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mach-O-scope.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -102,7 +100,6 @@
 				3222D4E81195F0EF007A29ED /* ClassMethodWindowController.m */,
 				32E06330119B9A4E00489307 /* DisassemblyWindowController.m */,
 				32E05A15119AFC2B00489307 /* MOSsymbolsTextFieldCell.m */,
-				3D33173411CE16E40065DC8E /* MOSMethodTextFieldCell.m */,
 				3222DD0D1197BAA8007A29ED /* MOSClass.m */,
 				3222E17211987E9D007A29ED /* MOSOperation.m */,
 				3222DFFF1197C6AD007A29ED /* MOSMethod.m */,
@@ -288,7 +285,6 @@
 				3222E17311987E9D007A29ED /* MOSOperation.m in Sources */,
 				32E05A16119AFC2B00489307 /* MOSsymbolsTextFieldCell.m in Sources */,
 				32E06331119B9A4E00489307 /* DisassemblyWindowController.m in Sources */,
-				3D33173511CE16E40065DC8E /* MOSMethodTextFieldCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

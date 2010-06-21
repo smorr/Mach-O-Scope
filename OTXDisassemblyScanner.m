@@ -61,30 +61,10 @@
 	[super dealloc];
 }
 
--(void)_backgroundImportBundle{
-	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-	
-	
-	// first call OTX to do its magic on the bundle and to write the otx dump to a file in the temporary directory.
-
-	NSString * tempOtxFile = [NSTemporaryDirectory() stringByAppendingString: [[self.bundlePath lastPathComponent] stringByAppendingString:@".otxdump"]];
-	
-	NSTask * otxTask = [[NSTask  alloc]  init];			
-	NSString * pathToOtx = [[NSBundle bundleForClass: [self class]] pathForResource:@"otx" ofType:nil];
-	[otxTask setLaunchPath:pathToOtx];
-	
-	[otxTask setArguments:[NSArray arrayWithObjects:[NSString stringWithFormat:@"-outFile=%@",tempOtxFile],
-						   [NSString stringWithFormat:@"-arch=%@",[[NSApp delegate] saveArchitecture]],
-						   self.bundlePath,nil]];
-	[otxTask launch];
-	
-	[otxTask waitUntilExit];
-	
-	[otxTask release];
-	
+- (void) importFromOtx: (NSString *) tempOtxFile  {
 	// next  from file
 
-	NSString * dis = [[NSString alloc] initWithContentsOfFile:tempOtxFile];
+	  NSString * dis = [[NSString alloc] initWithContentsOfFile:tempOtxFile];
 	NSArray * disArray = [[dis componentsSeparatedByString:@"\n"] copy];
 	[dis release];
 	
@@ -229,8 +209,45 @@
 										withObject:[NSNumber numberWithBool:!(self.cancelImport)]
 							waitUntilDone:NO];
 	}
+
+}
+-(void)_backgroundImportBundle
+{
+	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+	
+	
+	// first call OTX to do its magic on the bundle and to write the otx dump to a file in the temporary directory.
+
+	NSString * tempOtxFile = [NSTemporaryDirectory() stringByAppendingString: [[self.bundlePath lastPathComponent] stringByAppendingString:@".otxdump"]];
+	
+	NSTask * otxTask = [[NSTask  alloc]  init];			
+	NSString * pathToOtx = [[NSBundle bundleForClass: [self class]] pathForResource:@"otx" ofType:nil];
+	[otxTask setLaunchPath:pathToOtx];
+	
+	[otxTask setArguments:[NSArray arrayWithObjects:[NSString stringWithFormat:@"-outFile=%@",tempOtxFile],
+						   [NSString stringWithFormat:@"-arch=%@",[[NSApp delegate] saveArchitecture]],
+						   self.bundlePath,nil]];
+	[otxTask launch];
+	
+	[otxTask waitUntilExit];
+	
+	[otxTask release];
+	
+	[self importFromOtx: tempOtxFile];
+
 	[pool release];
 	
+	
+	
+}
+
+-(void)_backgroundImportOtx
+{
+	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+	
+	[self importFromOtx: self.bundlePath];
+	
+	[pool release];
 	
 	
 }

@@ -192,6 +192,17 @@ NSString * myNibName = @"ClassMethodBrowser";
 	[NSThread detachNewThreadSelector:@selector(_backgroundImportBundle) toTarget:self.currentScanner withObject:nil];
 	
 }
+-(void)importOtxAtPath:(id)otxPath{
+	[NSApp beginSheet: progressSheet
+	   modalForWindow: [self window]
+		modalDelegate: self
+	   didEndSelector: nil //didEndSheet:returnCode:contextInfo:
+		  contextInfo: nil];		
+	
+	self.currentScanner = [[OTXDisassemblyScanner alloc] initWithDelegate:self bundle:otxPath andDatabase:self.database];
+	[NSThread detachNewThreadSelector:@selector(_backgroundImportOtx) toTarget:self.currentScanner withObject:nil];
+	
+}
 
 
 -(void)openDisassemblyWindowForMethodID:(NSInteger)methodId{
