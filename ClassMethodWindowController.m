@@ -260,8 +260,14 @@ NSString * myNibName = @"ClassMethodBrowser";
 
 -(IBAction)saveSymbols:(id)sender
 {
-	NSString* query = @"select Methods.methodName, Operations.address from Operations inner join Methods on Operations.methodId = Methods.methodId group by Methods.methodId;";
+	NSString* createViewQuery = @"create view operations_by_address_desc as select * from operations order by address desc;";
+	NSString* query = @"select Methods.methodName, operations_by_address_desc.address from operations_by_address_desc inner join Methods on operations_by_address_desc.methodId = Methods.methodId group by Methods.methodId;";
+	NSString* dropViewQuery = @"drop view operations_by_address_desc;";
+
+	[self.database executeQueryWithParameters:createViewQuery,nil];
 	EGODatabaseResult * dbResult = [self.database executeQueryWithParameters:query,nil];
+	[self.database executeQueryWithParameters:dropViewQuery,nil];
+	
 	if ([dbResult count]){
 		NSMutableString* file = [NSMutableString string];
 		for (EGODatabaseRow * row in dbResult)
