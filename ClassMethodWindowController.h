@@ -44,13 +44,17 @@
 	NSInteger progressTotal;
 	BOOL cancelImport;
 	NSMutableArray * childWindows;
+	NSMutableArray * highlightedCells;
+	
 	OTXDisassemblyScanner * currentScanner;
 
 	IBOutlet NSWindow * progressSheet;
 	IBOutlet ClassArrayController* classesController;
 	NSArray * currentClassSelection;
 	IBOutlet NSArrayController* methodsController;
+	IBOutlet NSArrayController* operationsController;
 	NSArray * currentMethodSelection;
+	IBOutlet  NSTableView * operationsTable;
 
 }
 
@@ -64,6 +68,10 @@
 @property (assign) NSInteger progressTotal;
 @property (retain) NSArray * currentClassSelection;
 @property (retain) NSArray * currentMethodSelection;
+@property (retain) NSMutableArray * highlightedCells;
+
+@property (assign,nonatomic) NSTableView * operationsTable;
+@property (retain) NSArrayController *operationsController;
 
 -(id)initWithDatabasePath:(NSString*)aPath;
 -(void)openDisassemblyWindowForMethodID:(NSInteger)methodId;
@@ -73,5 +81,6 @@
 -(IBAction)openDocument:(id)sender;
 -(IBAction)disassembleMachO:(id)sender;
 -(IBAction)openNewDissamblyWindow:(id)sender;
-
+-(IBAction)doubleClickedTableView:(id)sender;
+-(IBAction)clickedTableView:(id)sender;
 @end

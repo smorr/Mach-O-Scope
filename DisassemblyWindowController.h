@@ -33,8 +33,23 @@
 
 @interface DisassemblyWindowController : NSWindowController {
 	MOSMethod * method;
+	MOSDatabase * database;
+	NSString *searchTerm;
+	IBOutlet NSTableView * operationsTable;
+	IBOutlet NSArrayController * operationsController;
+	NSMutableArray * highlightedCells;
+	
 }
 @property (retain) MOSMethod * method;
+@property (retain) MOSDatabase * database;
+@property (retain) NSString * searchTerm;
+@property (assign, nonatomic) NSTableView * operationsTable;
+@property (retain) NSArrayController * operationsController;
+@property (retain) NSMutableArray * highlightedCells;
+
 
 -(id)initWithMethod:(MOSMethod*)aMethod;
+-(IBAction)search:(id)sender;
+-(IBAction)doubleClickedTableView:(id)sender;
+-(IBAction)clickedTableView:(id)sender;
 @end

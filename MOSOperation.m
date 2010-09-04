@@ -34,16 +34,6 @@
 @implementation MOSOperation
 @synthesize operationID, methodID, offset;
 @synthesize address, bytes, opCode, data,notes,symbols, delegate;
-@synthesize highlightColor;
-static NSColor * _Static_greyColor;
-static NSColor * _Static_blackColor;
-
-+(void)load{
-	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-	_Static_greyColor = [[NSColor colorWithDeviceWhite:0.8 alpha:1.0] retain];
-	_Static_blackColor = [[NSColor blackColor] retain];
-	[pool release];
-}
 
 
 +(NSString*)createTableSqlStatement{
@@ -72,7 +62,6 @@ static NSColor * _Static_blackColor;
 		self.data			= [resultRow stringForColumn:@"data"];
 		self.notes			= [resultRow stringForColumn:@"notes"];
 		self.symbols		= [resultRow stringForColumn:@"symbols"];
-		self.highlightColor = _Static_blackColor;
 		[self addObserver:self forKeyPath:@"notes" options:0 context:0];
 	}
 	return self;
@@ -94,7 +83,6 @@ static NSColor * _Static_blackColor;
 	self.data			=	nil;
 	self.notes			=	nil;
 	self.symbols		=	nil;
-	self.highlightColor =	nil;
 	[super dealloc];
 	
 }
@@ -112,11 +100,26 @@ static NSColor * _Static_blackColor;
 		aCopy.data			=self.data		;
 		aCopy.notes			=self.notes		;
 		aCopy.symbols		=self.symbols	;
-		aCopy.highlightColor=self.highlightColor;
 		
 		[aCopy addObserver:aCopy forKeyPath:@"notes" options:0 context:0];
 	}
 	return aCopy;
 	
+}
+
+-(BOOL)operationContainsString:(NSString*)searchString inFields:(NSInteger)fields{
+	if (!searchString) return NO;
+	
+	if (fields & kSymbolsField && [self.symbols rangeOfString:searchString options:NSCaseInsensitiveSearch].location !=NSNotFound)
+		return YES;
+	if (fields & kDataField && [self.data rangeOfString:searchString options:NSCaseInsensitiveSearch].location !=NSNotFound)
+		return YES;
+	if (fields & kAddressField && [self.address rangeOfString:searchString options:NSCaseInsensitiveSearch].location !=NSNotFound)
+		return YES;
+	if (fields & kNotesField && [self.notes rangeOfString:searchString options:NSCaseInsensitiveSearch].location !=NSNotFound)
+		return YES;
+
+		
+	return NO;
 }
 @end

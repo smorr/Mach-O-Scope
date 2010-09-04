@@ -79,16 +79,6 @@ static NSColor * _Static_redColor;
 	NSMutableArray * operations = [[NSMutableArray alloc] initWithCapacity:[result count]];
 	for (id row in result){
 		MOSOperation* operationObject =[[MOSOperation alloc] initWithResultRow:row];
-		[operationObject setDelegate:  self];
-		NSString * searchSymbol = [self.delegate symbolFilter];
-		if ([self.delegate searchContext] == kSymbolSearch && [searchSymbol length]>0){
-			if ([operationObject.symbols rangeOfString:searchSymbol options: NSCaseInsensitiveSearch].location == NSNotFound){
-				operationObject.highlightColor = _Static_greyColor;
-			}
-			else{
-				operationObject.highlightColor = _Static_blackColor;
-			}
-		}
 		[operations addObject:operationObject];
 		[operationObject release];
 	}

@@ -146,8 +146,13 @@
 				}
 				currentClass= [info objectForKey:@"className"];
 				
+				
 				NSString * classID = [classIDs objectForKey:currentClass];
 				if (!classID){
+					//TODO: integrate with ClassDump - have MOS spin off a task for classdumping the currentCass
+					// need ivarList
+					// properties 
+					// superclass
 					[self.database executeQueryWithParameters:@"insert into Classes (className) values (?)",currentClass,nil];
 					EGODatabaseResult* result = [self.database executeQueryWithParameters:@"select * from Classes where className == ?",currentClass,nil];
 					if ([result count]){

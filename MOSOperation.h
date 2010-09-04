@@ -31,6 +31,16 @@
 #import <Cocoa/Cocoa.h>
 #import "EGODatabaseRow.h"
 
+enum {
+	kOffsetField = 1<<0,
+	kAddressField = 1<<1,
+	kBytesField = 1<<2,
+	kOpCodeField = 1<<3,
+	kDataField = 1<<4,
+	kSymbolsField = 1<<5,
+	kNotesField = 1<<6,
+	
+} ;
 
 @interface MOSOperation : NSObject {
 	NSInteger operationID;
@@ -42,11 +52,12 @@
 	NSString * data;
 	NSString * notes;
 	NSString * symbols;
-	NSColor * highlightColor;
-	
 	id delegate;
 	
 }
+
+
+	
 @property (assign) NSInteger operationID;
 @property (assign) NSInteger methodID;
 @property (assign) NSInteger offset;
@@ -58,9 +69,9 @@
 @property (copy) NSString * symbols;
 @property (assign) id delegate;
 
-@property (assign) NSColor * highlightColor;
-
 
 +(NSString*)createTableSqlStatement;
 -(id)initWithResultRow:(EGODatabaseRow *)resultRow;
+-(BOOL)operationContainsString:(NSString*)searchString inFields:(NSInteger)fields;
+
 @end

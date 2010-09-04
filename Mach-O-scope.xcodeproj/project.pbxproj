@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* Mach_O_scopeAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* Mach_O_scopeAppDelegate.m */; };
+		321CFA6D123282690065DD4A /* MOSTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 321CFA6C123282690065DD4A /* MOSTextFieldCell.m */; };
+		321CFC2112329A5E0065DD4A /* MOSDataTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 321CFC2012329A5E0065DD4A /* MOSDataTextFieldCell.m */; };
 		3222D4C21195EFFC007A29ED /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3222D4C11195EFFC007A29ED /* libsqlite3.dylib */; };
 		3222D4D71195F041007A29ED /* EGODatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3222D4D01195F041007A29ED /* EGODatabase.m */; };
 		3222D4D81195F041007A29ED /* EGODatabaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3222D4D21195F041007A29ED /* EGODatabaseRequest.m */; };
@@ -42,6 +44,10 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		321CFA6B123282690065DD4A /* MOSTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOSTextFieldCell.h; sourceTree = "<group>"; };
+		321CFA6C123282690065DD4A /* MOSTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOSTextFieldCell.m; sourceTree = "<group>"; };
+		321CFC1F12329A5E0065DD4A /* MOSDataTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOSDataTextFieldCell.h; sourceTree = "<group>"; };
+		321CFC2012329A5E0065DD4A /* MOSDataTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOSDataTextFieldCell.m; sourceTree = "<group>"; };
 		3222D4C11195EFFC007A29ED /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libsqlite3.dylib; sourceTree = "<group>"; };
 		3222D4CF1195F041007A29ED /* EGODatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGODatabase.h; sourceTree = "<group>"; };
 		3222D4D01195F041007A29ED /* EGODatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGODatabase.m; sourceTree = "<group>"; };
@@ -99,6 +105,8 @@
 				3222D4E81195F0EF007A29ED /* ClassMethodWindowController.m */,
 				32E06330119B9A4E00489307 /* DisassemblyWindowController.m */,
 				32E05A15119AFC2B00489307 /* MOSsymbolsTextFieldCell.m */,
+				321CFA6C123282690065DD4A /* MOSTextFieldCell.m */,
+				321CFC2012329A5E0065DD4A /* MOSDataTextFieldCell.m */,
 				3222DD0D1197BAA8007A29ED /* MOSClass.m */,
 				3222E17211987E9D007A29ED /* MOSOperation.m */,
 				3222DFFF1197C6AD007A29ED /* MOSMethod.m */,
@@ -196,6 +204,8 @@
 		32E063CF119C294D00489307 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				321CFC1F12329A5E0065DD4A /* MOSDataTextFieldCell.h */,
+				321CFA6B123282690065DD4A /* MOSTextFieldCell.h */,
 				3222D4F7119609F2007A29ED /* MOSDatabase.h */,
 				3222DAE211979F6C007A29ED /* OTXDisassemblyScanner.h */,
 				256AC3D80F4B6AC300CF3369 /* Mach_O_scopeAppDelegate.h */,
@@ -283,6 +293,8 @@
 				3222E17311987E9D007A29ED /* MOSOperation.m in Sources */,
 				32E05A16119AFC2B00489307 /* MOSsymbolsTextFieldCell.m in Sources */,
 				32E06331119B9A4E00489307 /* DisassemblyWindowController.m in Sources */,
+				321CFA6D123282690065DD4A /* MOSTextFieldCell.m in Sources */,
+				321CFC2112329A5E0065DD4A /* MOSDataTextFieldCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
