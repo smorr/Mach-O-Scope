@@ -52,4 +52,6 @@
 -(IBAction)search:(id)sender;
 -(IBAction)doubleClickedTableView:(id)sender;
 -(IBAction)clickedTableView:(id)sender;
+-(IBAction)insertToken:(id)sender;
+
 @end

@@ -204,14 +204,14 @@
 		32E063CF119C294D00489307 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				321CFC1F12329A5E0065DD4A /* MOSDataTextFieldCell.h */,
-				321CFA6B123282690065DD4A /* MOSTextFieldCell.h */,
 				3222D4F7119609F2007A29ED /* MOSDatabase.h */,
 				3222DAE211979F6C007A29ED /* OTXDisassemblyScanner.h */,
 				256AC3D80F4B6AC300CF3369 /* Mach_O_scopeAppDelegate.h */,
 				3222D4E71195F0EF007A29ED /* ClassMethodWindowController.h */,
 				32E0632F119B9A4E00489307 /* DisassemblyWindowController.h */,
 				32E05A14119AFC2B00489307 /* MOSsymbolsTextFieldCell.h */,
+				321CFC1F12329A5E0065DD4A /* MOSDataTextFieldCell.h */,
+				321CFA6B123282690065DD4A /* MOSTextFieldCell.h */,
 				3222DD0C1197BAA8007A29ED /* MOSClass.h */,
 				3222E17111987E9D007A29ED /* MOSOperation.h */,
 				3222DFFE1197C6AD007A29ED /* MOSMethod.h */,
@@ -337,7 +337,9 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				PRODUCT_NAME = "Mach-O-scope";
+				SDKROOT = macosx10.6;
 			};
 			name = Debug;
 		};

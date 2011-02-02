@@ -198,4 +198,9 @@ static NSColor *_static_greenHighlight = 0;
 		}
 	}
 }
+
+-(IBAction)insertToken:(id)sender{
+
+	
+}
 @end
