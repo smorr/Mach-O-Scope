@@ -222,11 +222,25 @@
 	
 	NSTask * otxTask = [[NSTask  alloc]  init];			
 	NSString * pathToOtx = [[NSBundle bundleForClass: [self class]] pathForResource:@"otx" ofType:nil];
-	[otxTask setLaunchPath:pathToOtx];
+	NSArray* args = [NSArray arrayWithObjects:@"-arch",
+					 [[NSApp delegate] saveArchitecture],
+					 self.bundlePath, nil];
 	
-	[otxTask setArguments:[NSArray arrayWithObjects:[NSString stringWithFormat:@"-outFile=%@",tempOtxFile],
-						   [NSString stringWithFormat:@"-arch=%@",[[NSApp delegate] saveArchitecture]],
-						   self.bundlePath,nil]];
+	// create the file with empty content to be able to create a valid file handle
+	[[NSData data] writeToFile:tempOtxFile options:0 error:nil];
+	NSFileHandle* writer = [NSFileHandle fileHandleForWritingAtPath:tempOtxFile];
+
+	if (writer)
+	{
+		[otxTask setStandardOutput:writer];
+	}
+	else
+	{
+		NSLog(@"could not create file handle");
+	}
+	[otxTask setLaunchPath:pathToOtx];
+	[otxTask setArguments:args];
+	
 	[otxTask launch];
 	
 	[otxTask waitUntilExit];
