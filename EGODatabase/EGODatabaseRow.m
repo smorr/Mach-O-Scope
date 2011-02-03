@@ -46,7 +46,7 @@
 }
 
 - (int)intForColumn:(NSString*)columnName {
-    int columnIndex = [self columnIndexForName:columnName];
+    NSInteger columnIndex = [self columnIndexForName:columnName];
 	if(columnIndex < 0 || columnIndex == NSNotFound) return 0;
     return [[columnData objectAtIndex:columnIndex] intValue];
 }
@@ -56,7 +56,7 @@
 }
 
 - (long)longForColumn:(NSString*)columnName {
-    int columnIndex = [self columnIndexForName:columnName];
+    NSInteger columnIndex = [self columnIndexForName:columnName];
 	if(columnIndex < 0 || columnIndex == NSNotFound) return 0;
     return [[columnData objectAtIndex:columnIndex] longValue];
 }
@@ -74,7 +74,7 @@
 }
 
 - (double)doubleForColumn:(NSString*)columnName {
-    int columnIndex = [self columnIndexForName:columnName];
+    NSInteger columnIndex = [self columnIndexForName:columnName];
 	if(columnIndex < 0 || columnIndex == NSNotFound) return 0;
     return [[columnData objectAtIndex:columnIndex] doubleValue];
 }
@@ -84,7 +84,7 @@
 }
 
 - (NSString*) stringForColumn:(NSString*)columnName {
-    int columnIndex = [self columnIndexForName:columnName];
+    NSInteger columnIndex = [self columnIndexForName:columnName];
 	if(columnIndex < 0 || columnIndex == NSNotFound) return @"";
     return [columnData objectAtIndex:columnIndex];
 }

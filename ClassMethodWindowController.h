@@ -83,4 +83,6 @@
 -(IBAction)openNewDissamblyWindow:(id)sender;
 -(IBAction)doubleClickedTableView:(id)sender;
 -(IBAction)clickedTableView:(id)sender;
+-(IBAction)saveSymbols:(id)sender;
+
 @end

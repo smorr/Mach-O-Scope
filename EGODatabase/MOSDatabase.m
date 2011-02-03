@@ -29,6 +29,7 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "MOSDatabase.h"
+#import "ClassMethodWindowController.h"
 
 const NSInteger structureVersion = 1;
 #import "MOSClass.h"
@@ -69,7 +70,8 @@ static NSColor * _Static_redColor;
 
 }
 
--(NSArray *)methodsForClassID:(NSInteger)classID{
+-(NSArray *)methodsForClassID:(NSInteger)classID
+{
 	return [MOSMethod methodsInDatabase:self forClassID:classID searchingFor:[self.delegate symbolFilter] inContext:[self.delegate searchContext]];
 	
 }
@@ -90,7 +92,8 @@ static NSColor * _Static_redColor;
 -(BOOL)updateStructuresIfNecessary{
 	return [MOSMethod updateTableIfNecessaryForDatabase:self];
 }
--(BOOL)createStructure{
+-(BOOL)createStructure
+{
 	
 	[self executeUpdateWithParameters:@"create table properties (ROWID INTEGER PRIMARY KEY, key text, value text, UNIQUE (key))",nil];
 	if ([self hadError]) {
@@ -148,5 +151,10 @@ static NSColor * _Static_redColor;
 		
 	}
 	return self;
+}
+-(NSArray *)methodsForClass:(NSString*)className
+{
+	NSLog(@"needs to be implemented: %s",__PRETTY_FUNCTION__);
+	return [NSArray array];
 }
 @end

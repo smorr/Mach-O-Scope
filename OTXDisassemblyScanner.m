@@ -28,6 +28,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #import "OTXDisassemblyScanner.h"
+#import "Mach_O_scopeAppDelegate.h"
 
 @interface NSString (OTXDisassemblyScanner)
 -(NSDictionary *) scanBlockInvocationMethodName;
@@ -43,11 +44,11 @@
 
 @synthesize database, delegate, bundlePath,cancelImport;
 
-- (id)initWithDelegate: (id)anObject bundle:(NSString*)bundlePath andDatabase:(MOSDatabase *)aDatabase{
+- (id)initWithDelegate: (id)anObject bundle:(NSString*)aBundlePath andDatabase:(MOSDatabase *)aDatabase{
 	self = [super init];
 	if (self){
 		self.delegate = anObject;
-		self.bundlePath = bundlePath;
+		self.bundlePath = aBundlePath;
 		self.database = aDatabase;
 	}
 	return self;
@@ -60,30 +61,10 @@
 	[super dealloc];
 }
 
--(void)_backgroundImportBundle{
-	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-	
-	
-	// first call OTX to do its magic on the bundle and to write the otx dump to a file in the temporary directory.
-
-	NSString * tempOtxFile = [NSTemporaryDirectory() stringByAppendingString: [[self.bundlePath lastPathComponent] stringByAppendingString:@".otxdump"]];
-	
-	NSTask * otxTask = [[NSTask  alloc]  init];			
-	NSString * pathToOtx = [[NSBundle bundleForClass: [self class]] pathForResource:@"otx" ofType:nil];
-	[otxTask setLaunchPath:pathToOtx];
-	
-	[otxTask setArguments:[NSArray arrayWithObjects:[NSString stringWithFormat:@"-outFile=%@",tempOtxFile],
-						   [NSString stringWithFormat:@"-arch=%@",[[NSApp delegate] saveArchitecture]],
-						   self.bundlePath,nil]];
-	[otxTask launch];
-	
-	[otxTask waitUntilExit];
-	
-	[otxTask release];
-	
+- (void) importFromOtx: (NSString *) tempOtxFile  {
 	// next  from file
 
-	NSString * dis = [[NSString alloc] initWithContentsOfFile:tempOtxFile];
+	  NSString * dis = [[NSString alloc] initWithContentsOfFile:tempOtxFile];
 	NSArray * disArray = [[dis componentsSeparatedByString:@"\n"] copy];
 	[dis release];
 	
@@ -121,7 +102,7 @@
 		
 		if([line length] >0){
 			NSString * methodType = nil;
-			if ([line hasPrefix:@"+("] || [line hasPrefix:@"-("] || [line hasPrefix:@"_"]){
+			if ([line hasPrefix:@"+("] || [line hasPrefix:@"-("] || [line hasPrefix:@"_"] || [line hasPrefix:@"Anon"]){
 				NSDictionary * info = nil;
 				if ([line hasPrefix:@"+("]){  
 					methodType = @"+";
@@ -140,7 +121,7 @@
 					info = [line scanBlockInvocationMethodName];
 				}
 					// class method
-				else if ([line hasPrefix:@"_"]){// c function call
+				else if ([line hasPrefix:@"_"] || [line hasPrefix:@"Anon"]){// c function call
 					info = [line scanCFunctionName];
 					methodType = @"C";
 				}
@@ -233,8 +214,59 @@
 										withObject:[NSNumber numberWithBool:!(self.cancelImport)]
 							waitUntilDone:NO];
 	}
+
+}
+-(void)_backgroundImportBundle
+{
+	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+	
+	
+	// first call OTX to do its magic on the bundle and to write the otx dump to a file in the temporary directory.
+
+	NSString * tempOtxFile = [NSTemporaryDirectory() stringByAppendingString: [[self.bundlePath lastPathComponent] stringByAppendingString:@".otxdump"]];
+	
+	NSTask * otxTask = [[NSTask  alloc]  init];			
+	NSString * pathToOtx = [[NSBundle bundleForClass: [self class]] pathForResource:@"otx" ofType:nil];
+	NSArray* args = [NSArray arrayWithObjects:@"-arch",
+					 [[NSApp delegate] saveArchitecture],
+					 self.bundlePath, nil];
+	
+	// create the file with empty content to be able to create a valid file handle
+	[[NSData data] writeToFile:tempOtxFile options:0 error:nil];
+	NSFileHandle* writer = [NSFileHandle fileHandleForWritingAtPath:tempOtxFile];
+
+	if (writer)
+	{
+		[otxTask setStandardOutput:writer];
+	}
+	else
+	{
+		NSLog(@"could not create file handle");
+	}
+	[otxTask setLaunchPath:pathToOtx];
+	[otxTask setArguments:args];
+	
+	[otxTask launch];
+	
+	[otxTask waitUntilExit];
+	
+	[otxTask release];
+	
+	[self importFromOtx: tempOtxFile];
+
 	[pool release];
 	
+	
+	
+}
+
+-(void)_backgroundImportOtx
+{
+	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+	
+	[self importFromOtx: self.bundlePath];
+	
+	[pool release];
 	
 	
 }

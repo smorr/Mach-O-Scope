@@ -29,7 +29,7 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "MOSMethod.h"
-
+#import "ClassMethodWindowController.h"
 
 @implementation MOSMethod
 @synthesize rawInfo,methodID, methodName,methodType, returnType, notes;
@@ -100,6 +100,11 @@ static NSColor * _Static_blackColor;
 	return aCopy;
 }
 
++(NSString*)createTableSqlStatement
+{
+	NSLog(@"needs to be implemented: %s",__PRETTY_FUNCTION__);
+	return @"";
+}
 @end
 
 @implementation MOSMethod (database)

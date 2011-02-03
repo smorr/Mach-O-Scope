@@ -47,4 +47,5 @@
 -(NSArray *)methods;
 + (NSArray *)classesForDatabase:(MOSDatabase*)database;
 + (NSArray *)classesForDatabase:(MOSDatabase*)database whoseMethodsReferToSymbol:(NSString*) aSymbol;
++ (NSArray *)classesForDatabase:(MOSDatabase*)database searchingFor:(NSString*) aSymbol inContext:(NSInteger) context;
 @end

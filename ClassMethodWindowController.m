@@ -213,6 +213,17 @@ static NSColor *_static_greenHighlight = 0;
 	[NSThread detachNewThreadSelector:@selector(_backgroundImportBundle) toTarget:self.currentScanner withObject:nil];
 	
 }
+-(void)importOtxAtPath:(id)otxPath{
+	[NSApp beginSheet: progressSheet
+	   modalForWindow: [self window]
+		modalDelegate: self
+	   didEndSelector: nil //didEndSheet:returnCode:contextInfo:
+		  contextInfo: nil];		
+	
+	self.currentScanner = [[OTXDisassemblyScanner alloc] initWithDelegate:self bundle:otxPath andDatabase:self.database];
+	[NSThread detachNewThreadSelector:@selector(_backgroundImportOtx) toTarget:self.currentScanner withObject:nil];
+	
+}
 
 
 -(void)openDisassemblyWindowForMethodID:(NSInteger)methodId{
@@ -370,6 +381,44 @@ static NSColor *_static_greenHighlight = 0;
 			}
 		}
 	}
+}
+-(IBAction)saveSymbols:(id)sender
+{
+	NSString* createViewQuery = @"create view operations_by_address_desc as select * from operations order by address desc;";
+	NSString* query = @"select Methods.methodName, operations_by_address_desc.address from operations_by_address_desc inner join Methods on operations_by_address_desc.methodId = Methods.methodId group by Methods.methodId;";
+	NSString* dropViewQuery = @"drop view operations_by_address_desc;";
+
+	[self.database executeQueryWithParameters:createViewQuery,nil];
+	EGODatabaseResult * dbResult = [self.database executeQueryWithParameters:query,nil];
+	[self.database executeQueryWithParameters:dropViewQuery,nil];
+	
+	if ([dbResult count]){
+		NSMutableString* file = [NSMutableString string];
+		for (EGODatabaseRow * row in dbResult)
+		{
+			[file appendFormat:@"%@ %@\n",[row.columnData objectAtIndex:1],[row.columnData objectAtIndex:0]];
+		}
+		NSString* path = [[self.database.databasePath stringByDeletingLastPathComponent] stringByAppendingPathComponent:[[[self.database.databasePath lastPathComponent] stringByDeletingPathExtension] stringByAppendingPathExtension:@"symbols"]];
+		[file writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
+	}
+	else
+	{
+		NSRunAlertPanel(@"Error", @"No Results", @"Ok", nil, nil);
+	}
+}
+
+-(IBAction)openDocument:(id)sender
+{
+	NSLog(@"to be implemented");
+}
+-(IBAction)disassembleMachO:(id)sender
+{
+	NSLog(@"to be implemented");
+}
+
+-(IBAction)openNewDissamblyWindow:(id)sender
+{
+	NSLog(@"to be implemented");
 }
 
 @end
