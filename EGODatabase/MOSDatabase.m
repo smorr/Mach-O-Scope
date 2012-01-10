@@ -82,6 +82,7 @@ static NSColor * _Static_redColor;
 	for (id row in result){
 		MOSOperation* operationObject =[[MOSOperation alloc] initWithResultRow:row];
 		[operations addObject:operationObject];
+        [operationObject setDelegate:self];
 		[operationObject release];
 	}
 	return [operations autorelease];
@@ -90,7 +91,9 @@ static NSColor * _Static_redColor;
 
 
 -(BOOL)updateStructuresIfNecessary{
-	return [MOSMethod updateTableIfNecessaryForDatabase:self];
+    [MOSClass updateTableIfNecessaryForDatabase:self];
+    [MOSMethod updateTableIfNecessaryForDatabase:self];
+	return YES; 
 }
 -(BOOL)createStructure
 {
@@ -106,7 +109,7 @@ static NSColor * _Static_redColor;
 		return NO;
 	} 
 	
-	[self executeUpdateWithParameters:@"create table Classes (classID INTEGER PRIMARY KEY, className text, categoryName text, UNIQUE (classID))",nil];
+	[self executeUpdateWithParameters:@"create table Classes (classID INTEGER PRIMARY KEY, className text, categoryName text, classDump text, UNIQUE (classID))",nil];
 	if ([self hadError]) {
 		NSLog(@"Err %d: %@", [self lastErrorCode], [self lastErrorMessage]);
 		return NO;

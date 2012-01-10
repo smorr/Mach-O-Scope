@@ -46,6 +46,9 @@
 	NSArray * objects = [[super arrangedObjects] sortedArrayUsingDescriptors:[self sortDescriptors]];
 	return objects;
 }
-
+-(NSFont *)displayFont{
+    return [NSFont fontWithName: @"Monaco" size:9.0];
+    
+}
 
 @end

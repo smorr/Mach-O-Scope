@@ -35,6 +35,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	// Insert code here to initialize your application 
+    NSLog (@"hello");
 	windowControllers = [[NSMutableArray alloc] init];
 	self.saveArchitecture =@"i386";
 }

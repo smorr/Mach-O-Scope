@@ -33,7 +33,68 @@
 #import "EGODatabaseRow.h"
 
 @implementation MOSClass
-@synthesize classID, className, name, delegate;
+@synthesize classID, className, name, delegate,classDump;
+
++(NSInteger)currentVersion{
+	return 3;
+}
+//+(BOOL)createSqliteTableForDatabase:(MOSDatabase*)database{	
+//	[database executeUpdateWithParameters:@"insert into properties (key,value) values (?, ?) ",@"methodsVersion",[NSNumber numberWithInteger:[self currentVersion]],nil];
+//	if ([database hadError]) {
+//		NSLog(@"Err %d: %@", [database lastErrorCode], [database lastErrorMessage]);
+//		return NO;
+//	} 
+//	
+//	[database executeUpdate:@"create table Methods (methodID INTEGER PRIMARY KEY, classID integer Key, rawInfo text, methodName text, methodType text, returnType text, notes text, UNIQUE (methodID))"];
+//	
+//	if ([database hadError]) {
+//		NSLog(@"Err %d: %@", [database lastErrorCode], [database lastErrorMessage]);
+//		return NO;
+//	} 
+//	return YES;
+//}
+
+
+
+
++(NSInteger)persistenceVersionForDatabase:(MOSDatabase*)database{
+	EGODatabaseResult * result = [database executeQueryWithParameters:@"select value from properties where key = ?",@"classesVersion",nil];
+	if ([result count]){
+		return [[result rowAtIndex:0] intForColumn:@"value"];
+	}
+	return -1;
+}
+
++(BOOL)updateTableIfNecessaryForDatabase:(MOSDatabase*)database{
+	NSInteger oldVersion = [self persistenceVersionForDatabase:database];
+	NSInteger currentVersion = [self currentVersion];
+    BOOL updateSuccessful = YES;
+	if (oldVersion < currentVersion){
+		[database executeUpdate:@"alter table Classes add classDump text"];
+     		if ([database hadError]) {
+			NSLog(@"Err %d: %@", [database lastErrorCode], [database lastErrorMessage]);
+			updateSuccessful = NO;
+            
+		} 
+		if (oldVersion ==-1){
+			[database executeUpdateWithParameters:@"insert into properties (key,value) values (?, ?) ",@"classesVersion",[NSNumber numberWithInteger:currentVersion],nil];
+			if ([database hadError]) {
+				NSLog(@"Err %d: %@", [database lastErrorCode], [database lastErrorMessage]);
+				return NO;
+			} 
+		}
+		else{
+			[database executeUpdateWithParameters:@"update properties set value=? where key=?",[NSNumber numberWithInteger:currentVersion],@"classesVersion",nil];
+			if ([database hadError]) {
+				NSLog(@"Err %d: %@", [database lastErrorCode], [database lastErrorMessage]);
+				return NO;
+			} 
+			
+		}
+	}
+	return updateSuccessful;
+}
+
 
 
 + (NSArray *)classesForDatabase:(MOSDatabase*)database{
@@ -42,6 +103,7 @@
 	for (EGODatabaseRow* row in classesResult){
 		MOSClass * classObject = [[MOSClass alloc] initWithID: [[row stringForColumn:@"classID"] integerValue] andName: [row stringForColumn:@"className"]];
 		[classObject setDelegate:database];
+        [classObject setClassDump: [row stringForColumn:@"classDump"]];
 		[classes addObject:classObject];
 		[classObject release];
 	}
@@ -59,7 +121,8 @@
 		for (EGODatabaseRow* row in classesResult){
 			MOSClass * classObject = [[MOSClass alloc] initWithID: [[row stringForColumn:@"classID"] integerValue] andName: [row stringForColumn:@"className"]];
 			[classObject setDelegate:  database];
-			[classes addObject:classObject];
+            [classObject setClassDump: [row stringForColumn:@"classDump"]];
+            [classes addObject:classObject];
 			[classObject release];
 		}
 		return [classes autorelease];
@@ -70,7 +133,8 @@
 		NSMutableArray * classes = [[NSMutableArray alloc] initWithCapacity:[classesResult count]];
 		for (EGODatabaseRow* row in classesResult){
 			MOSClass * classObject = [[MOSClass alloc] initWithID: [[row stringForColumn:@"classID"] integerValue] andName: [row stringForColumn:@"className"]];
-			[classObject setDelegate:  database];
+            [classObject setClassDump: [row stringForColumn:@"classDump"]];
+            [classObject setDelegate:  database];
 			[classes addObject:classObject];
 			[classObject release];
 		}
@@ -92,6 +156,11 @@
 -(id)methods{
 	return [self.delegate methodsForClassID:self.classID];
 	
+}
+
+-(NSFont *)displayFont{
+    return [NSFont fontWithName: @"Monaco" size:9.0];
+    
 }
 
 -(void)dealloc{

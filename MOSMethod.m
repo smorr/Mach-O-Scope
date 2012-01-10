@@ -110,7 +110,7 @@ static NSColor * _Static_blackColor;
 @implementation MOSMethod (database)
 
 +(NSInteger)currentVersion{
-	return 2;
+	return 3;
 }
 +(BOOL)createSqliteTableForDatabase:(MOSDatabase*)database{	
 	[database executeUpdateWithParameters:@"insert into properties (key,value) values (?, ?) ",@"methodsVersion",[NSNumber numberWithInteger:[self currentVersion]],nil];
@@ -119,7 +119,7 @@ static NSColor * _Static_blackColor;
 		return NO;
 	} 
 	
-	[database executeUpdate:@"create table Methods (methodID INTEGER PRIMARY KEY, classID integer Key, rawInfo text, methodName text, methodType text, returnType text, UNIQUE (methodID))"];
+	[database executeUpdate:@"create table Methods (methodID INTEGER PRIMARY KEY, classID integer Key, rawInfo text, methodName text, methodType text, returnType text, notes text, UNIQUE (methodID))"];
 	
 	if ([database hadError]) {
 		NSLog(@"Err %d: %@", [database lastErrorCode], [database lastErrorMessage]);

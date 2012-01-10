@@ -34,6 +34,7 @@
 @interface MOSClass : NSObject <NSCopying>{
 	NSInteger classID;
 	NSString * className;
+    NSString * classDump;
 	NSString * name;
 	id delegate;
 }
@@ -41,6 +42,8 @@
 @property (assign) id delegate;
 @property (assign) NSInteger classID;
 @property (copy) NSString * className;
+@property (copy) NSString * classDump;
+@property (readonly) NSFont * displayFont;
 @property (copy) NSString * name;
 
 -(id)initWithID:(NSInteger) aClassID andName:(NSString*) name;
@@ -48,4 +51,5 @@
 + (NSArray *)classesForDatabase:(MOSDatabase*)database;
 + (NSArray *)classesForDatabase:(MOSDatabase*)database whoseMethodsReferToSymbol:(NSString*) aSymbol;
 + (NSArray *)classesForDatabase:(MOSDatabase*)database searchingFor:(NSString*) aSymbol inContext:(NSInteger) context;
++(BOOL)updateTableIfNecessaryForDatabase:(MOSDatabase*)database;
 @end

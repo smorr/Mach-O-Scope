@@ -61,10 +61,72 @@
 	[super dealloc];
 }
 
-- (void) importFromOtx: (NSString *) tempOtxFile  {
+- (void) importFromOtx: (NSString *) tempOtxFile  classdump:(NSString*)tempClassDumpFile{
 	// next  from file
+    NSMutableDictionary * interfaces = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary * structs = [[NSMutableDictionary alloc] init];
+    if (tempClassDumpFile){
+        
+        NSString * classDump = [[NSString alloc] initWithContentsOfFile:tempClassDumpFile encoding:NSASCIIStringEncoding error:nil];
+         NSMutableString * currentStruct = nil;
+         NSString * currentItemName = nil;
+         NSMutableString * currentInterface = nil;
+         NSArray * classDumpArray = [classDump componentsSeparatedByString:@"\n"];
+         for (NSString * line in classDumpArray){
+        // [classDump enumerateLinesUsingBlock:^(NSString *line, BOOL *stop) { // this crashes!
+ 
+             if (currentStruct == nil && currentInterface==nil){
+                 if ( [line hasPrefix:@"struct"]){
+                     //NSLog (@"found  %@",line); 
+                     currentStruct = [[NSMutableString alloc] initWithString: line];
+                     currentItemName = [[[line componentsSeparatedByString:@" "] objectAtIndex:1] copy];
+                 }
+                 if ( [line hasPrefix:@"@interface"]){
+                     currentInterface = [[NSMutableString  alloc] initWithString: line];
+                     //NSLog (@"found  %@",line);
+                     NSArray * interfaceParts = [line componentsSeparatedByString:@" "];
+                     currentItemName = [[interfaceParts objectAtIndex:1] copy];
+                     
+                 }
+            }
+            else if (currentStruct){
+                [currentStruct appendFormat:@"\n%@",line];
+                if ([line hasPrefix:@"};"]){
+                    [structs setObject:currentStruct forKey:currentItemName];
+                     //NSLog (@"end %@",currentItemName);
+                    [currentStruct release];
+                    currentStruct = nil;
+                    [currentItemName release];
+                    currentItemName = nil;
+                }
+            }
+            else if (currentInterface){
+                [currentInterface appendFormat:@"\n%@",line];
+                if ([line hasPrefix:@"@end"]){
+                    NSMutableString * existingInterface = [[interfaces objectForKey: currentItemName] mutableCopy];
+                    if (existingInterface) 
+                        [existingInterface appendFormat: @"\n\n%@",currentInterface];
+                    else 
+                       existingInterface = [[NSMutableString alloc] initWithString:currentInterface];
+                    
+                    [interfaces setObject:existingInterface forKey:currentItemName];
+                    [existingInterface release];
+                   // NSLog (@"end %@",currentItemName);
+                    [currentInterface release];
+                    currentInterface = nil;
 
-	  NSString * dis = [[NSString alloc] initWithContentsOfFile:tempOtxFile];
+                    [currentItemName release];
+                    currentItemName = nil;
+                  }
+            }             
+         }
+         
+        [classDump release];
+
+        
+        
+    }
+    NSString * dis = [[NSString alloc] initWithContentsOfFile:tempOtxFile encoding:NSASCIIStringEncoding error:nil];
 	NSArray * disArray = [[dis componentsSeparatedByString:@"\n"] copy];
 	[dis release];
 	
@@ -134,7 +196,9 @@
 					// need ivarList
 					// properties 
 					// superclass
-					[self.database executeQueryWithParameters:@"insert into Classes (className) values (?)",currentClass,nil];
+                    NSString *classDump = [interfaces objectForKey:currentClass];
+                    if (!classDump) classDump=@"";
+					[self.database executeQueryWithParameters:@"insert into Classes (className,classDump) values (?,?)",currentClass,classDump,nil];
 					EGODatabaseResult* result = [self.database executeQueryWithParameters:@"select * from Classes where className == ?",currentClass,nil];
 					if ([result count]){
 						classID = [[result rowAtIndex:0] stringForColumnIndex:0];
@@ -204,7 +268,9 @@
 		}
 		if (cancelImport) break;
 	}
-	
+    [structs release];
+    [interfaces release];
+	[classIDs release];
 	[disArray release];
 	[self.database executeUpdate:@"insert into Operations select * from tempOperations "];
 	[self.database executeUpdate:@"drop table tempOperations"];
@@ -216,25 +282,25 @@
 	}
 
 }
--(void)_backgroundImportBundle
-{
-	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-	
-	
-	// first call OTX to do its magic on the bundle and to write the otx dump to a file in the temporary directory.
 
-	NSString * tempOtxFile = [NSTemporaryDirectory() stringByAppendingString: [[self.bundlePath lastPathComponent] stringByAppendingString:@".otxdump"]];
+
+-(NSString *) _dumpOTX{
+    NSString * tempOtxFile = [NSTemporaryDirectory() stringByAppendingString: [[self.bundlePath lastPathComponent] stringByAppendingString:@".otxdump"]];
 	
 	NSTask * otxTask = [[NSTask  alloc]  init];			
 	NSString * pathToOtx = [[NSBundle bundleForClass: [self class]] pathForResource:@"otx" ofType:nil];
-	NSArray* args = [NSArray arrayWithObjects:@"-arch",
+    
+    
+    
+    NSArray* args = [NSArray arrayWithObjects:@"-arch",
 					 [[NSApp delegate] saveArchitecture],
 					 self.bundlePath, nil];
-	
+    
+    
 	// create the file with empty content to be able to create a valid file handle
 	[[NSData data] writeToFile:tempOtxFile options:0 error:nil];
 	NSFileHandle* writer = [NSFileHandle fileHandleForWritingAtPath:tempOtxFile];
-
+    
 	if (writer)
 	{
 		[otxTask setStandardOutput:writer];
@@ -251,8 +317,60 @@
 	[otxTask waitUntilExit];
 	
 	[otxTask release];
+    
+    return tempOtxFile;
+    
+}
+
+-(NSString *)_dumpClassDump{
+    NSString * tempClassDumpFile = [NSTemporaryDirectory() stringByAppendingString: [[self.bundlePath lastPathComponent] stringByAppendingString:@".classdump"]];
+    NSTask * classDumpTask = [[NSTask  alloc]  init];		
+    NSString * pathToClassDump = [[NSBundle bundleForClass: [self class]] pathForResource:@"class-dump" ofType:nil];
+    NSArray* classDumpArgs = [NSArray arrayWithObjects:@"--arch",
+                              [[NSApp delegate] saveArchitecture],
+                              @"-a", // show instance Variable offsets
+                              @"-A", // show implementation addresses
+                              @"-s", // sort classes and Categories
+                              //@"-S", // sortMethods
+                              self.bundlePath, nil];    
+    
+	// create the file with empty content to be able to create a valid file handle
+	[[NSData data] writeToFile:tempClassDumpFile options:0 error:nil];
+	NSFileHandle* writer = [NSFileHandle fileHandleForWritingAtPath:tempClassDumpFile];
+    
+	if (writer)
+	{
+		[classDumpTask setStandardOutput:writer];
+	}
+	else
+	{
+		NSLog(@"could not create file handle");
+	}
+	[classDumpTask setLaunchPath:pathToClassDump];
+	[classDumpTask setArguments:classDumpArgs];
 	
-	[self importFromOtx: tempOtxFile];
+	[classDumpTask launch];
+	
+	[classDumpTask waitUntilExit];
+	
+	[classDumpTask release];
+
+    return tempClassDumpFile;
+    
+}
+-(void)_backgroundImportBundle
+{
+	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+	
+	
+	// first call OTX to do its magic on the bundle and to write the otx dump to a file in the temporary directory.
+
+  
+
+    NSString * tempOtxFilePath= [self _dumpOTX];
+    NSString * tempClassDumpFilePath= [self _dumpClassDump];
+    
+	[self importFromOtx: tempOtxFilePath classdump:tempClassDumpFilePath];
 
 	[pool release];
 	
@@ -264,7 +382,7 @@
 {
 	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
 	
-	[self importFromOtx: self.bundlePath];
+	[self importFromOtx: self.bundlePath classdump:nil];
 	
 	[pool release];
 	

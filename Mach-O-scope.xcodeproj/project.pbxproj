@@ -28,6 +28,7 @@
 		32E05A16119AFC2B00489307 /* MOSsymbolsTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32E05A15119AFC2B00489307 /* MOSsymbolsTextFieldCell.m */; };
 		32E06331119B9A4E00489307 /* DisassemblyWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32E06330119B9A4E00489307 /* DisassemblyWindowController.m */; };
 		32E06338119B9A9700489307 /* DisassemblyWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32E06337119B9A9700489307 /* DisassemblyWindow.xib */; };
+		32F48A6F14BC8D8D003B76AF /* class-dump in Resources */ = {isa = PBXBuildFile; fileRef = 32F48A6E14BC8D8D003B76AF /* class-dump */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -78,6 +79,7 @@
 		32E0632F119B9A4E00489307 /* DisassemblyWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisassemblyWindowController.h; sourceTree = "<group>"; };
 		32E06330119B9A4E00489307 /* DisassemblyWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisassemblyWindowController.m; sourceTree = "<group>"; };
 		32E06337119B9A9700489307 /* DisassemblyWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisassemblyWindow.xib; sourceTree = "<group>"; };
+		32F48A6E14BC8D8D003B76AF /* class-dump */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "class-dump"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Mach_O_scope-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Mach_O_scope-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Mach-O-scope.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mach-O-scope.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				3222D9C911978CFA007A29ED /* otx */,
+				32F48A6E14BC8D8D003B76AF /* class-dump */,
 				3222D4C11195EFFC007A29ED /* libsqlite3.dylib */,
 				8D1107310486CEB800E47090 /* Mach_O_scope-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
@@ -248,7 +251,11 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Mach-O-scope" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Mach-O-scope */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -268,6 +275,7 @@
 				3222D4E31195F0B9007A29ED /* ClassMethodBrowser.xib in Resources */,
 				3222D9CA11978CFA007A29ED /* otx in Resources */,
 				32E06338119B9A9700489307 /* DisassemblyWindow.xib in Resources */,
+				32F48A6F14BC8D8D003B76AF /* class-dump in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

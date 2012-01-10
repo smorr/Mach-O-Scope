@@ -85,7 +85,7 @@ static NSColor *_static_greenHighlight = 0;
 -(id)initWithDatabasePath:(NSString*)aPath{
 	self = [self init];
 	if (self){
-		self.database = [[MOSDatabase alloc] initWithPath:aPath andDelegate:self];
+		self.database = [[[MOSDatabase alloc] initWithPath:aPath andDelegate:self] autorelease];
 	}
 	return self;
 }
@@ -99,6 +99,7 @@ static NSColor *_static_greenHighlight = 0;
 	[currentScanner release];
 	[highlightedCells release];
 	[operationsController release];
+    [_database release];
 	[super dealloc];
 }
 
@@ -170,7 +171,7 @@ static NSColor *_static_greenHighlight = 0;
 		}	
 		
 		[self willChangeValueForKey:@"classes"];
-		id oldString = self.symbolFilter;
+		id oldString = symbolFilter;
 		symbolFilter = [aSymbol copy];
 		[oldString release];
 		[self didChangeValueForKey:@"classes"];
@@ -209,7 +210,7 @@ static NSColor *_static_greenHighlight = 0;
 	   didEndSelector: nil //didEndSheet:returnCode:contextInfo:
 		  contextInfo: nil];		
 	
-	self.currentScanner = [[OTXDisassemblyScanner alloc] initWithDelegate:self bundle:bundlePath andDatabase:self.database];
+	self.currentScanner = [[[OTXDisassemblyScanner alloc] initWithDelegate:self bundle:bundlePath andDatabase:self.database] autorelease];
 	[NSThread detachNewThreadSelector:@selector(_backgroundImportBundle) toTarget:self.currentScanner withObject:nil];
 	
 }
@@ -220,7 +221,7 @@ static NSColor *_static_greenHighlight = 0;
 	   didEndSelector: nil //didEndSheet:returnCode:contextInfo:
 		  contextInfo: nil];		
 	
-	self.currentScanner = [[OTXDisassemblyScanner alloc] initWithDelegate:self bundle:otxPath andDatabase:self.database];
+	self.currentScanner = [[[OTXDisassemblyScanner alloc] initWithDelegate:self bundle:otxPath andDatabase:self.database] autorelease];
 	[NSThread detachNewThreadSelector:@selector(_backgroundImportOtx) toTarget:self.currentScanner withObject:nil];
 	
 }
@@ -235,7 +236,7 @@ static NSColor *_static_greenHighlight = 0;
 			method.delegate = self.database;
 			DisassemblyWindowController * disWindowController = [[DisassemblyWindowController alloc] initWithMethod:method];
 			//FIXME: The window controller should be dealt with properly and not just leaked
-#pragma unused(disWindowController);
+#pragma unused(disWindowController)
 			
 			[method release];
 		}
@@ -342,7 +343,7 @@ static NSColor *_static_greenHighlight = 0;
 						
 						NSString * columnIdentifier = [NSString stringWithFormat:@"%ld",kAddressField];
 						NSInteger addressColumnIndex = [sender columnWithIdentifier: columnIdentifier];
-					    NSTableColumn* addressColumn = [sender  tableColumnWithIdentifier:columnIdentifier];
+					 //   NSTableColumn* addressColumn = [sender  tableColumnWithIdentifier:columnIdentifier];
 						
 						
 						
@@ -373,7 +374,7 @@ static NSColor *_static_greenHighlight = 0;
 				NSInteger count = [allOps count];
 				while (count--){
 					if ([[(MOSOperation*)[allOps objectAtIndex:count] address] isEqualToString:jumpAddress]){
-					    [(NSTableView*)sender selectRow:count byExtendingSelection:NO];
+					    [(NSTableView*)sender selectRowIndexes:[NSIndexSet indexSetWithIndex:count ] byExtendingSelection:NO];
 						[(NSTableView*)sender scrollRowToVisible:count];
 						break;
 					}
