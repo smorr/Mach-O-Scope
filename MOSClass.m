@@ -141,6 +141,23 @@
 		return [classes autorelease];
 		
 	}
+    
+    if (context==kAddressSearch){
+        NSString * formattedSymbol =[NSString stringWithFormat:@"%%%@%%",aSymbol];
+		EGODatabaseResult * classesResult = [database executeQueryWithParameters:@"select * from classes where classID in (select classID from methods where methodID in (select methodID from operations where address like ?))",formattedSymbol,nil];
+		NSMutableArray * classes = [[NSMutableArray alloc] initWithCapacity:[classesResult count]];
+		for (EGODatabaseRow* row in classesResult){
+			MOSClass * classObject = [[MOSClass alloc] initWithID: [[row stringForColumn:@"classID"] integerValue] andName: [row stringForColumn:@"className"]];
+			[classObject setDelegate:  database];
+            [classObject setClassDump: [row stringForColumn:@"classDump"]];
+            [classes addObject:classObject];
+			[classObject release];
+		}
+		return [classes autorelease];
+
+
+        
+    }
 	return nil;
 }
 

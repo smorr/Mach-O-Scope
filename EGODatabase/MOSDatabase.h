@@ -35,7 +35,8 @@
 
 enum {
 	kSymbolSearch = 0,
-	kMethodNameSearch = 1
+	kMethodNameSearch = 1,
+	kAddressSearch = 2
 };
 
 

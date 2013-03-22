@@ -61,6 +61,8 @@ NSString * myNibName = @"ClassMethodBrowser";
 @synthesize operationsTable;
 @synthesize	operationsController;
 @synthesize highlightedCells;
+@synthesize addressSlideFieldValue;
+@synthesize addressSlideValue;
 
 static NSColor *_static_yellowHighlight = 0;
 static NSColor *_static_greenHighlight = 0;
@@ -99,6 +101,7 @@ static NSColor *_static_greenHighlight = 0;
 	[currentScanner release];
 	[highlightedCells release];
 	[operationsController release];
+    [addressSlideFieldValue release];
     [_database release];
 	[super dealloc];
 }
@@ -341,7 +344,7 @@ static NSColor *_static_greenHighlight = 0;
 				while (count--){
 					if ([[(MOSOperation*)[allOps objectAtIndex:count] address] isEqualToString:jumpAddress]){
 						
-						NSString * columnIdentifier = [NSString stringWithFormat:@"%ld",kAddressField];
+						NSString * columnIdentifier = [NSString stringWithFormat:@"%ld",(long)kAddressField];
 						NSInteger addressColumnIndex = [sender columnWithIdentifier: columnIdentifier];
 					 //   NSTableColumn* addressColumn = [sender  tableColumnWithIdentifier:columnIdentifier];
 						
@@ -408,6 +411,8 @@ static NSColor *_static_greenHighlight = 0;
 	}
 }
 
+
+
 -(IBAction)openDocument:(id)sender
 {
 	NSLog(@"to be implemented");
@@ -422,6 +427,33 @@ static NSColor *_static_greenHighlight = 0;
 	NSLog(@"to be implemented");
 }
 
+
+-(void) optionsSheetdidEndSheet:(NSWindow*)sheet returnCode:(NSInteger) returnCode contextInfo:(void*)context{
+    if (    [self.addressSlideFieldValue hasPrefix:@"0x"]){
+        NSString * hexValue = [addressSlideFieldValue substringFromIndex:2];
+        NSScanner * hexScanner = [NSScanner scannerWithString:hexValue];
+        unsigned long long longValue = 0;
+        [hexScanner scanHexLongLong:&longValue];
+        
+        self.addressSlideValue = longValue;
+       
+    }
+    else{
+        self.addressSlideValue =  [addressSlideFieldValue longLongValue];
+    }
+    [sheet orderOut:self];
+
+}
+- (IBAction)optionOKAction:(id)sender{
+    [NSApp endSheet:searchOptionsWindow];
+}
+- (IBAction)setSearchOptions:(id)sender{
+    [NSApp beginSheet: searchOptionsWindow
+	   modalForWindow: [self window]
+		modalDelegate: self
+	   didEndSelector:  @selector(optionsSheetdidEndSheet:returnCode:contextInfo:)
+		  contextInfo: nil];
+}
 @end
 
 

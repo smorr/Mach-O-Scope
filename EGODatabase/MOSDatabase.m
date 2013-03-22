@@ -66,12 +66,43 @@ static NSColor * _Static_redColor;
 }
 
 -(NSArray *)classes{
-	return [MOSClass classesForDatabase:self searchingFor: [self.delegate symbolFilter] inContext:[self.delegate searchContext]];
+    if ([self.delegate searchContext]==kAddressSearch){
+        if (![[self.delegate symbolFilter] hasPrefix:@"0x"]){
+            long long value = [[self.delegate symbolFilter] longLongValue];
+            NSString * addressString  = [NSString stringWithFormat:@"%016llx",[self. delegate addressSlideValue]+value];
+            NSLog (@"searching classes for address: %@",addressString);
+            return [MOSClass classesForDatabase:self searchingFor: addressString inContext:[self.delegate searchContext ]];
+        }
+        else{
+            NSString * addressString =[[self.delegate symbolFilter] substringFromIndex:2];
+            NSLog (@"searching  classes for address: %@",addressString);
+  return [MOSClass classesForDatabase:self searchingFor: addressString inContext:[self.delegate searchContext ]];
+        }
+
+    }
+    
+	return [MOSClass classesForDatabase:self searchingFor: [self.delegate symbolFilter] inContext:[self.delegate searchContext ]];
 
 }
 
 -(NSArray *)methodsForClassID:(NSInteger)classID
 {
+    
+    if ([self.delegate searchContext]==kAddressSearch){
+        
+        if (![[self.delegate symbolFilter] hasPrefix:@"0x"]){
+            long long value = [[self.delegate symbolFilter] longLongValue];
+            NSString * addressString  = [NSString stringWithFormat:@"%016llx",[self. delegate addressSlideValue]+value];
+            NSLog (@"searching methods for address: %@",addressString);
+           return [MOSMethod methodsInDatabase:self forClassID:classID searchingFor:addressString inContext:[self.delegate searchContext]];
+        }
+        else{
+            NSString * addressString =[[self.delegate symbolFilter] substringFromIndex:2];
+            NSLog (@"searching methods for address: %@",addressString);
+    return [MOSMethod methodsInDatabase:self forClassID:classID searchingFor:addressString inContext:[self.delegate searchContext]];
+        }
+    }
+    
 	return [MOSMethod methodsInDatabase:self forClassID:classID searchingFor:[self.delegate symbolFilter] inContext:[self.delegate searchContext]];
 	
 }

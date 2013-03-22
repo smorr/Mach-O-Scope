@@ -51,7 +51,7 @@ static NSColor *_static_greenHighlight = 0;
 }
 
 -(id)init{
-	self = [super initWithWindowNibName:[NSString stringWithString:@"DisassemblyWindow"]];
+	self = [super initWithWindowNibName:@"DisassemblyWindow"];
 	if (self){
 		[self showWindow:self];
 		highlightedCells = [[NSMutableArray alloc] init];
@@ -156,7 +156,7 @@ static NSColor *_static_greenHighlight = 0;
 				while (count--){
 					if ([[(MOSOperation*)[allOps objectAtIndex:count] address] isEqualToString:jumpAddress]){
 						
-						NSString * columnIdentifier = [NSString stringWithFormat:@"%ld",kAddressField];
+						NSString * columnIdentifier = [NSString stringWithFormat:@"%ld",(long)kAddressField];
 						NSInteger addressColumnIndex = [sender columnWithIdentifier: columnIdentifier];
 					    //NSTableColumn* addressColumn = [sender  tableColumnWithIdentifier:columnIdentifier];
 						

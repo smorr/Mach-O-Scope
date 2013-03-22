@@ -269,6 +269,56 @@ static NSColor * _Static_blackColor;
 		}
 		
 	}
+    if (context == kAddressSearch){
+		
+		
+		NSString * formattedSymbol =[NSString stringWithFormat:@"%%%@%%",aSymbol];
+		
+		EGODatabaseResult * methodresult = [database executeQueryWithParameters:@"select methodID,rawInfo from methods where classid = ? and methodid in (select methodID from operations where address like ? )",[NSNumber numberWithInteger:classID],formattedSymbol,nil];
+		if ([database.delegate showMisses]){
+			NSMutableSet * highlightedMethods = [[NSMutableSet alloc] initWithCapacity:[methodresult count]];
+			
+			for (id row in methodresult){
+				[highlightedMethods addObject:[row stringForColumn:@"methodID"]];
+			}
+			
+			EGODatabaseResult * result = [database executeQueryWithParameters:@"select * from Methods where classID=?",[NSNumber numberWithInteger:classID]  ,nil];
+			NSMutableArray * methods = [[NSMutableArray alloc] initWithCapacity:[result count]];
+			NSMutableArray * nonHighlightedMethods = [[NSMutableArray alloc] initWithCapacity:[result count]];
+			for (id row in result){
+				MOSMethod* methodObject =[[MOSMethod alloc] initWithResultRow: row];
+				if ([highlightedMethods containsObject:[row stringForColumn:@"methodID"]])	{
+					[methodObject setHighlightColor:_Static_blackColor];
+					[methods addObject:methodObject];
+				}
+				else{
+					
+					[methodObject setHighlightColor:_Static_greyColor];
+					[nonHighlightedMethods addObject:methodObject];
+				}
+				[methodObject setDelegate:  database];
+				
+				[methodObject release];
+			}
+			[highlightedMethods release];
+			[methods addObjectsFromArray:nonHighlightedMethods];
+			[nonHighlightedMethods release];
+			return [methods autorelease];
+		}
+		else{
+			NSMutableArray * methods = [[NSMutableArray alloc] initWithCapacity:[methodresult count]];
+            
+			for (id row in methodresult){
+				MOSMethod* methodObject =[[MOSMethod alloc] initWithResultRow: row];
+				[methodObject setHighlightColor:_Static_blackColor];
+				[methodObject setDelegate:  database];
+				[methods addObject:methodObject];
+				[ methodObject release];
+			}
+			return [methods autorelease];
+		}
+	}
+
 	return nil;
 }
 

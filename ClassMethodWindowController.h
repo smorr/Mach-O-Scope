@@ -38,6 +38,9 @@
 	NSString * pathToDatabase;
 	NSString * methodFilter;
 	NSString * symbolFilter;
+    NSString * addressSlideFieldValue;
+    unsigned long long addressSlideValue;
+    
 	NSInteger searchContext;
 	NSInteger showMisses;
 	NSInteger progressAmount;
@@ -56,6 +59,7 @@
 	NSArray * currentMethodSelection;
 	IBOutlet  NSTableView * operationsTable;
 
+    IBOutlet NSWindow *searchOptionsWindow;
 }
 
 @property (retain,readonly) MOSDatabase * database;
@@ -69,6 +73,8 @@
 @property (retain) NSArray * currentClassSelection;
 @property (retain) NSArray * currentMethodSelection;
 @property (retain) NSMutableArray * highlightedCells;
+@property (retain) NSString * addressSlideFieldValue;
+@property (assign) unsigned long long addressSlideValue;
 
 @property (assign,nonatomic) NSTableView * operationsTable;
 @property (retain) NSArrayController *operationsController;
@@ -77,6 +83,9 @@
 -(void)openDisassemblyWindowForMethodID:(NSInteger)methodId;
 -(NSArray*)classes;
 
+
+- (IBAction)setSearchOptions:(id)sender;
+
 -(IBAction)cancelImport:(id)sender;
 -(IBAction)openDocument:(id)sender;
 -(IBAction)disassembleMachO:(id)sender;
@@ -84,5 +93,6 @@
 -(IBAction)doubleClickedTableView:(id)sender;
 -(IBAction)clickedTableView:(id)sender;
 -(IBAction)saveSymbols:(id)sender;
+- (IBAction)optionOKAction:(id)sender;
 
 @end
